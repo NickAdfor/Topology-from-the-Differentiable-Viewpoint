@@ -1,0 +1,1986 @@
+\documentclass[11pt, b5paper, oneside]{book}
+
+% Packages and commands
+%\usepackage{mycommands}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{array}
+
+\usepackage{bm}
+\usepackage{booktabs}
+
+\usepackage{comment}
+
+\usepackage{datetime}
+\usdate
+\usepackage{diagbox}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{esint}
+\usepackage{extarrows}
+
+\usepackage[twoside]{fancyhdr}
+\usepackage{float}
+\usepackage{fontspec}
+\usepackage[T1]{fontenc}
+\usepackage{footmisc}
+
+\usepackage{geometry}
+\usepackage{graphicx}
+
+\usepackage{imakeidx}
+\usepackage{hyperref}
+
+\usepackage{import}
+\usepackage{indentfirst}
+
+
+\usepackage{listings}
+\usepackage{longtable}
+
+\usepackage{makecell}
+\usepackage[fleqn,tbtags]{mathtools}
+\usepackage{mathrsfs}
+
+%\usepackage{mathptmx}
+\usepackage{multicol}
+
+\usepackage{pdfpages}
+
+\usepackage{stackengine, stackrel}
+\usepackage{setspace}
+\usepackage{stmaryrd}
+
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{thmtools}
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+\setcounter{secnumdepth}{0}
+
+
+
+\titleformat{\chapter}{\huge \sffamily \bfseries}{\Huge\thechapter}{1em}{}
+\titlespacing{\chapter}{0pt}{1em}{3em}
+\titleformat*{\section}{\Large \bfseries \sffamily}
+\titleformat*{\subsection}{\bfseries \sffamily}
+
+\usepackage{ulem}
+
+\usepackage{xcolor}
+\usepackage{xifthen}
+
+\makeindex[title={Index\protect\footnote[9]{Retypeset: This section may be somewhat different from the original text.}}]
+\makeindex[name=symbol, title={Index of Symbols\protect\footnote[9]{Retypeset: This section may be somewhat different from the original text.}}]
+
+
+
+%\usepackage{yhmath}
+
+\usetikzlibrary{cd, backgrounds, calc, shadows, positioning, fit, intersections, through, arrows.meta, bending, fadings, petri}
+
+\tikzcdset{
+	arrow style=tikz,
+	diagrams={>={Stealth}}
+}
+
+	 % Math roman
+\newcommand{\e}{\mathrm{e}}
+\renewcommand{\d}{\,\mathrm{d}}
+\renewcommand{\i}{\marhtm{i}}
+\newcommand{\rd}{\mathrm{d}}
+
+
+	 % Operator names \Grad \Div \Span
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Image}{\operatorname{Image}}
+\newcommand{\graph}{\operatorname{graph}}
+\newcommand{\Interior}{\operatorname{Interior}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\Grad}{\operatorname{\mathbf{grad}}}
+\newcommand{\sign}{\operatorname{sign}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\codim}{\operatorname{codim}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\grad}{\operatorname{grad}}
+\newcommand{\GL}{\operatorname{GL}}
+
+	 % Blackboard \bbX
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\bbD}{\mathbb{D}}
+
+	 % Greek alphabets
+\newcommand{\ep}{\epsilon}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\la}{\lambda}	\newcommand{\La}{\Lambda}
+\newcommand{\ups}{\upsilon}	\newcommand{\Ups}{\Upsilon}
+\newcommand{\fai}{\varphi}
+\newcommand{\om}{\omega}	\newcommand{\Om}{\Omega}
+
+	 % Derivatives
+\newcommand{\deriv}[2]{\frac{\mathrm{d}{#1}}{\mathrm{d}#2}}
+\newcommand{\nderiv}[3]{\frac{\mathrm{d}^{#3}{#1}}{\mathrm{d}#2^{#3}}}
+\newcommand{\pderiv}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\newcommand{\npderiv}[3]{\frac{\partial^{#3} {#1}}{\partial {#2}^{#3}}}
+\newcommand{\Covderiv}[2]{\frac{\mathrm{D}{#1}}{\mathrm{d}#2}}
+
+	 % Delimiters
+\newcommand{\innprod}[2]{\left< #1, #2 \right>}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\br}[1]{\left( #1 \right)}
+\newcommand{\sqbr}[1]{\left[ #1 \right]}
+\newcommand{\Br}[1]{\left\{ #1 \right\}}
+\newcommand{\spbr}[1]{\left\langle #1 \right\rangle}	%spike bracket%
+\newcommand{\set}[1]{\left\{ \, #1 \, \right\}}
+
+	 % Other commands
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\x}{\times}
+\newcommand{\wto}{\rightharpoonup} % weak to
+
+\geometry{bottom=0.8in, left=1.1in, right=1.1in}
+ % Basic settings
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1] {\markboth{\MakeUppercase{\thechapter.\ #1}}{}} 
+\renewcommand{\sectionmark}[1] {\markright{\MakeUppercase{#1}}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt} 
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries \sffamily \thepage}
+\fancyhead[LO]{\bfseries \sffamily \nouppercase \rightmark}
+\fancyhead[RE]{\bfseries \sffamily \nouppercase \leftmark}
+
+\fancypagestyle{plain}{
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries \sffamily \thepage}
+}
+\setlength{\headheight}{15pt}
+
+
+\allowdisplaybreaks[1]
+
+\AtBeginDocument{
+	%\abovedisplayskip=6pt
+	%\belowdisplayskip=6pt
+}
+
+\hypersetup{
+	colorlinks,
+	linkcolor={red!50!black},
+	citecolor={green!50!black},
+	urlcolor={blue}
+}
+
+ % List setting
+\setlist[enumerate]{itemsep=0pt, parsep=0pt}
+\setlist[itemize]{itemsep=0pt, parsep=0pt}
+\setlist[enumerate,1]{label=(\arabic*)}
+\setlist[enumerate,2]{label=(\roman*)}
+\setlist[enumerate,3]{label=(\alph*)}
+\setlist[enumerate,4]{label=(\Alph*)}
+
+
+ % Theorems
+\declaretheoremstyle[
+headfont=\bfseries,
+notefont=\bfseries,
+bodyfont=\normalfont,
+spaceabove=1em,
+spacebelow=1em,
+headindent=\parindent,
+notebraces={(}{)},
+postheadspace=1em,
+headpunct={.},
+]{thm}
+\declaretheorem[numbered=no, title=Theorem, style=thm]{theorem}
+\declaretheorem[numberwithin=chapter, title=Theorem, style=thm]{theoremn}
+\renewcommand{\thetheoremn}{\Alph{theoremn}}
+\declaretheorem[numberwithin=chapter, title=Theorem, style=thm]{theoremarab}
+\renewcommand{\thetheoremarab}{\arabic{theoremarab}}
+\declaretheorem[numberwithin=chapter, title=Lemma, style=thm]{lemma}
+\renewcommand{\thelemma}{\arabic{lemma}}
+\declaretheorem[numbered=no, title=Lemma, style=thm]{lemma*}
+\declaretheorem[numbered=no, title=Definition, style=thm]{definition}
+\declaretheorem[numbered=no, title=Definitions, style=thm]{definitions}
+\declaretheorem[numbered=no, title=Assertion, style=thm]{assertion}
+\declaretheorem[numbered=no, title=Proposition, style=thm]{proposition}
+\declaretheorem[numbered=no, title=Corollary, style=thm]{corollary}
+\declaretheorem[numberwithin=chapter, title=Problem, style=thm]{problem}
+\renewcommand{\theproblem}{\arabic{problem}}
+
+\declaretheorem[numbered=no, title=Inverse Function Theorem, style=thm]{IFT}
+\declaretheorem[numbered=no, title=Brouwer Fixed Point Theorem, style=thm]{brouwer}
+\declaretheorem[numbered=no, title=Theorem of Sard, style=thm]{sard}
+\declaretheorem[numbered=no, title=Homotopy Lemma, style=thm]{homotopylemma}
+\declaretheorem[numbered=no, title=Homogeneity Lemma, style=thm]{homogeneitylemma}
+\declaretheorem[numbered=no, title=Poincar\'e-Hopf Theorem, style=thm]{poincarehopf}
+\declaretheorem[numbered=no, title=Product Neighborhood Theorem, style=thm]{prodnbhd}
+\declaretheorem[numbered=no, title=Theorem of Hopf, style=thm]{hopf}
+
+\declaretheoremstyle[
+headfont=\itshape,
+notefont=\itshape,
+bodyfont=\normalfont,
+spaceabove=1em,
+spacebelow=1em,
+headindent=\parindent,
+notebraces={(}{)},
+postheadspace=1em,
+headpunct={.}
+]{rmk}
+\declaretheorem[numbered=no, title=Remark, style=rmk]{remark}
+
+\declaretheoremstyle[
+headfont=\scshape,
+notefont=\scshape,
+bodyfont=\normalfont,
+spaceabove=1em,
+spacebelow=1em,
+headindent=\parindent,
+notebraces={(}{)},
+postheadspace=1em,
+headpunct={.}
+]{exam}
+\declaretheorem[numbered=no, title=Examples, style=exam]{examples}
+\declaretheorem[numbered=no, title=Example, style=exam]{example}
+
+ % Proof
+% \begin{proof}[proof name][author name] \end{proof}
+\newcommand\zhmgs[1]{\textbf{#1}\hspace{1em}}
+\makeatletter
+\def\zhm{\@ifstar{\zhmm[Proof.]}{\@ifnextchar[{\zhmm}{\zhmm[Proof.]}}}
+\def\zhmm[#1]{\@ifnextchar[{\zhmmm[#1]}{\zhmgs{#1}}}
+\def\zhmmm[#1][#2]{\zhmgs{#1\ (#2)}}
+\makeatother
+\renewenvironment{proof}
+{\addvspace{1em} \zhm}
+{\hfill $\blacksquare$ \par \ignorespacesafterend \addvspace{1em}}
+
+
+ % Enumerators setting
+\renewcommand{\theequation}{\arabic{equation}}
+\counterwithout{figure}{chapter}
+
+
+ % Meta info
+	\title{\Huge \sffamily \bfseries Topology from the Differentiable Viewpoint}
+	\author{\sffamily John W. Milnor}
+	\date{}
+
+
+\newcommand{\sA}{\mathscr{A}}
+\newcommand{\sB}{\mathscr{B}}
+\newcommand{\sP}{\mathscr{P}}
+\newcommand{\rO}{\operatorname{O}}
+\renewcommand{\vec}[1]{\overrightarrow{#1}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\df}{\rd \! f}
+\newcommand{\bbH}{\mathbb{H}}
+\renewcommand{\mod}{\operatorname{mod}}
+
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\newcommand{\incfig}[1]{%
+	\def\svgwidth{\columnwidth}
+	\import{}{#1.pdf_tex}
+}
+
+\linespread{1}
+
+\setmainfont{TeX Gyre Termes}
+\setsansfont{Futura LT Pro}
+\setmonofont{Consolas}
+
+\hyphenpenalty=5000
+\tolerance=1000
+
+\usepackage[lite, uprightGreek, straightbraces]{mtpro2}
+%\usepackage{mathpazo}
+
+
+\begin{document}
+	\frontmatter
+	
+	\maketitle
+	
+	\chapter*{Remark on the Retypeset}
+	
+	\begin{center}
+		\Large \color{red} \sffamily
+		This retypeset is completely FREE. \\ 
+		DO NOT use for commercial purposes.
+	\end{center}
+	
+	This retypeset is \textit{not} official.
+	
+	Those footnotes with the symbol $\ddagger\ddagger$ mean that this footnote is made by me but not the author. Other footnotes are made by the author.
+	
+	I rewrote many formulae, e.g. the original formula is
+	\[ \partial x/\partial t. \]
+	I will rewrite it as
+	\[ \pderiv{x}{t}. \]
+	Formulae similar to
+	\[ \begin{array}{llll}
+		& f(x) = \fai(\pi(x)) & \text{for} & x \in V, \\
+		& f(x) = s_0 & \text{for} & x \notin V
+	\end{array} \]
+	are rewrote as
+	\[ f(x) = \left\{\begin{array}{ll}
+		\fai(\pi(x)), &\quad x \in V, \\
+		s_0, &\quad x \notin V,
+	\end{array}\right. \]
+	which is probably a more general style. In this document, all $\eps$'s in the original text are replaced by $\in$.
+	
+	All figures are remade by me.
+	
+	Contact me if you find any typo.
+	
+	\vspace{1em}
+	
+	Font info:
+	\begin{itemize}
+		\item Main font: TeX Gyre Termes
+		\item Sans serif: {\sffamily Futura LT Pro}
+		\item Links: {\ttfamily Consolas}
+		\item Math: \textit{MathTime Pro II Lite}
+	\end{itemize}
+
+	Contact me: {\ttfamily 1481291259@qq.com}
+	
+	\href{https://pan.baidu.com/s/1-gY-8bVgE2qYWTxWmOp7Ig?pwd=mnfd}{\ttfamily Click to check update.} Password: {\ttfamily mnfd}.
+	
+	Compile date of this version: \today.
+	
+	\newlength{\gnat}
+	\settowidth{\gnat}{\sffamily Ran Mitake {\small (pseudonym)}}
+	\hfill\parbox{\gnat}{
+	\centering
+	{\sffamily Ran Mitake {\small (pseudonym)}} \\
+	February 9, 2024
+	}
+	
+	\tableofcontents
+	
+	\mainmatter
+
+	\chapter[Smooth manifolds and smooth maps]{Smooth manifolds \\ and smooth maps}\label{chap:1}
+	\chaptermark{Smooth manifolds and smooth maps}
+	
+	First let us explain some of our terms. \index[symbol]{$\R^k$}$\R^k$ denotes the $k$-dimensional Euclidean space\index{Euclidean space}; thus a point $x \in \R^k$ is a $k$-tuple $x=(x_1,\cdots,x_k)$ of real numbers.
+	
+	Let $U \subset \R^k$ and $V \subset \R^l$ be open sets. A mapping $f$ from $U$ to $V$ (written $f \colon U \to V$) is called \index{smooth}\textit{smooth} if all of the partial derivatives $\frac{\partial^n f}{\partial x_{i_1}, \cdots, \partial x_{i_n}}$ exist and are continuous.
+	
+	More generally let $X \subset \R^k$ and $Y \subset \R^l$ be arbitrary subsets of Euclidean spaces. A map $f \colon X \to Y$ is called \textit{smooth} if for each $x \in X$ there exist an open set $U \subset \R^k$ containing $x$ and a smooth mapping $F \colon U \to \R^l$ that coincides with $f$ throughout $U \cap X$.
+	
+	If $f \colon X \to Y$ and $g \colon Y \to Z$ are smooth, note that the composition $g \circ f \colon X \to Z$ \index[symbol]{$g \circ f$} is also smooth. The identity map of any set $X$ is automatically smooth.
+	
+	\begin{definition}
+		A map $f \colon X \to Y$ is called a \textit{diffeomorphism}\index{diffeomorphism} if $f$ carries $X$ homeomorphically onto $Y$ and if both $f$ and $f^{-1}$ are smooth.
+	\end{definition}
+
+	We can now indicate roughly what \textit{differential topology}\index{differential topology} is about by saying that it studies those properties of a set $X \subset \R^k$ which are invariant under diffeomorphism.
+	
+	We do not, however, want to look at completely arbitrary sets $X$. The following definition singles out a particularly attractive and useful class.
+
+	\begin{definition}
+		A subset $M \subset \R^k$ is called a \textit{smooth manifold}\index{smooth manifold} of \textit{dimension}\index{dimension} $m$ if each $x \in M$ has a neighborhood $W \cap M$ that is diffeomorphic to an open subset $U$ of the Euclidean space $\R^m$.
+	\end{definition}
+
+	Any particular diffeomorphism $g \colon U \to W \cap M$ is called a \textit{parametrization}\index{parametrization} of the region $W \cap M$. (The inverse diffeomorphism $W \cap M \to U$ is called a system of \textit{coordinates}\index{coordinates} on $W \cap M$.)
+	
+	Sometimes we will need to look at manifolds of dimension zero. By definition, $M$ is a manifold of dimension zero if each $x \in M$ has a neighborhood $W \cap M$ consisting of $x$ alone.
+
+	\begin{figure}[t]
+		\centering
+		\def\svgwidth{0.9\columnwidth}
+		\import{}{manifolddef.pdf_tex}
+		\caption{Parametrization of a region in $M$.}
+		\label{fig:1}
+	\end{figure}
+	
+	\begin{examples}
+		The unit sphere\index{sphere} $\bbS^2$\index[symbol]{$\bbS^{n-1}$}, consisting of all $(x,y,z) \in \R^3$ with $x^2+y^2+z^2=1$ is a smooth manifold of dimension $2$. In fact the diffeomorphism
+		\[ (x,y) \mapsto (x,y,\sqrt{1-x^2-y^2}), \]
+		for $x^2+y^2<1$, parametrizes the region $z>0$ of $\bbS^2$. By interchanging the roles of $x$, $y$, $z$, and changing the signs of the variables, we obtain similar parametrizations of the regions $x>0$, $y>0$, $x<0$, $y<0$ and $z<0$. Since these cover $\bbS^2$, it follows that $\bbS^2$ is a smooth manifold.
+		
+		More generally the sphere $\bbS^{n-1} \subset \R^n$ consisting of all $(x_1,\cdots,x_n)$ with $\sum x_i^2=1$ is a smooth manifold of dimension $n-1$. For example $\bbS^0 \subset \R^1$ is a manifold consisting of just two points.
+		
+		A somewhat wilder example of a smooth manifold is given by the set of all $(x,y) \in \R^2$ with $x \neq 0$ and $y=\sin(1/x)$.
+	\end{examples}
+
+	\section{Tangent spaces and derivatives}
+	
+	To define the notion of \textit{derivative}\index{derivative} $\df_x$ for a smooth map $f \colon M \to N$ of smooth manifolds, we first associate with each $x \in M \subset \R^k$ a linear subspace $TM_x\index[symbol]{$TM_x$} \subset \R^k$ of dimension $m$ call the \textit{tangent space}\index{tangent space} of $M$ at $x$. Then $\df_x$ will be a linear mapping from $TM_x$ to $TN_y$, where $y=f(x)$. Elements of the vector space $TM_x$ are called \textit{tangent vectors}\index{tangent vector} to $M$ at $x$.
+	
+	Intuitively one thinks of the $m$-dimensional hyperplane in $\R^k$ which best approximates $M$ near $x$; then $TM_x$ is the hyperplane through the origin that is parallel to this. (Compare Figure \ref{fig:1} and \ref{fig:2}.) Similarly one thinks of the nonhomogeneous linear mapping from the tangent hyperplane at $x$ to the tangent hyperplane at $y$ which best approximates $f$. Translating both hyperplanes to the origin, one obtains $\df_x$\index[symbol]{$\df_x$}.
+	
+	Before giving the actual definition, we must study the special case of mappings between open sets. For any open set $U \subset \R^k$ the \textit{tangent space}\index{tangent space} $TU_x$ is defined to be the entire vector space $\R^k$. For any smooth map $f \colon U \to V$ the \textit{derivative}\index{derivative}
+	\[ \df_x \colon \R^k \to \R^l \]
+	is defined by the formula
+	\[ \df_x(h) = \lim_{t \to 0} \frac{f(x+th)-f(x)}t \]
+	for $x \in U$, $h \in \R^k$. Clearly $\df_x(h)$ is a linear function of $h$. (In fact $\df_x$ is just that linear mapping which corresponds to the $l \x k$ matrix $\br{\pderiv{f_i}{x_j}}_x$ of first partial derivatives, evaluated at $x$.)
+	
+	Here are two fundamental properties of the derivative operation:
+	
+	\begin{enumerate}
+		\item (Chain rule).\index{chain rule} \textit{If $f \colon U \to V$ and $g \colon V \to W$ are smooth maps, with $f(x)=y$, then}
+		\[ \rd(g \circ f)_x = \rd g_x \circ \df_x. \]
+		In other words, to every commutative triangle
+		\[ \begin{tikzcd}[column sep=small]
+			& V \ar[dr, "g"] & \\
+			U \ar[ur, "f"] \ar[rr, "g \circ f"'] & & W
+		\end{tikzcd} \]
+		of smooth maps between open subsets of $\R^k$, $\R^l$, $\R^m$ there corresponds a commutative triangle of linear maps
+		\[ \begin{tikzcd}[column sep=small]
+			& \R^l \ar[dr, "\rd g_y"] & \\
+			\R^k \ar[ur, "\df_x"] \ar[rr, "\rd(g \circ f)_x"'] & & \R^m
+		\end{tikzcd} \]
+		
+		\item \textit{If $I$ is the identity map of $U$, then $\rd I_x$ is the identity map of $\R^k$. More generally, if $U \subset U'$ are open sets and}
+		\[ i \colon U \to U' \]
+		\textit{is the inclusion map, then again $\rd i_x$ is the identity map of $\R^k$}.
+		
+		Note also:
+		
+		\item If $L \colon \R^k \to \R^l$ is a linear mapping, then $\rd L_x = L$.
+	\end{enumerate}
+
+	As a simple application of the two properties one has the following:
+	
+	\begin{assertion}
+		If $f$ is a diffeomorphism between open sets $U \subset \R^k$ and $V \subset \R^l$, then $k$ must equal $l$, and the linear mapping
+		\[ \df_x \colon \R^k \to \R^l \]
+		must be nonsingular.
+	\end{assertion}
+
+	\begin{proof}
+		The composition $f^{-1} \circ f$ is the identity map of $U$; hence $\rd(f^{-1})_y \circ \df_x$ is the identity map of $\R^k$. Similarly $\df_x \circ \rd(f^{-1})_y$ is the identity map of $\R^l$. Thus $\df_x$ has a two-sided inverse, and it follows that $k=l$.
+	\end{proof}
+
+	A partial converse to this assertion is valid. Let $f \colon U \to \R^k$ be a smooth map, with $U$ open in $\R^k$.
+	
+	\begin{IFT}\index{inverse function theorem}
+		If the derivative $\df_x \colon \R^k \to \R^k$ is nonsingular, then $f$ maps any sufficiently small open set $U'$ about $x$ diffeomorphically onto an open set $f(U')$.
+		
+		(See Apostol \cite[p. 144]{bib2} or Dieudonne \cite[p. 268]{bib7}.)
+	\end{IFT}
+
+	Note that $f$ may not be one-one in the large, even if every $\df_x$ is nonsingular. (An instructive example is provided by the exponential mapping of the complex plane into itself.)
+	
+	Now let us define the \textit{tangent space}\index{tangent space} $TM_x$ for an arbitrary smooth manifold $M \subset \R^k$. Choose a parametrization
+	\[ g \colon U \to M \subset \R^k \]
+	of a neighborhood $g(U)$ of $x$ in $M$, with $g(u)=x$. Here $U$ is an open subset of $\R^m$. Think of $g$ as a mapping from $U$ to $\R^k$, so that the derivative
+	\[ \rd g_u \colon \R^m \to \R^k \]
+	is defined. \textit{Set $TM_x$ equal to the image $\rd g_u(\R^m)$ of $\rd g_u$}. (Compare Figure \ref{fig:1}.)
+	
+	We must prove that this construction does not depend on the particular choice of parametrization $g$. Let $h \colon V \to M \subset \R^k$ be another parametrization of a neighborhood $h(V)$ of $x$ in $M$, and let $v = h^{-1}(x)$. Then $h^{-1} \circ g$ maps some neighborhood $U_1$ of $u$ diffeomorphically onto a neighborhood $V_1$ of $v$. The commutative diagram of smooth maps between open sets
+	\[ \begin{tikzcd}[column sep=small]
+		& \R^k & \\
+		U_1 \ar[ur, "g"] \ar[rr, "h^{-1} \circ g"'] & & V_1 \ar[ul, "h"']
+	\end{tikzcd} \]
+	gives rise to a commutative diagram of linear maps
+	\[ \begin{tikzcd}[column sep=small]
+		& \R^k & \\
+		U_1 \ar[ur, "\rd g_u"] \ar[rr, "\rd(h^{-1} \circ g)_u"', "\simeq"] & & V_1 \ar[ul, "\rd h_v"']
+	\end{tikzcd} \]
+	and it follows immediately that
+	\[ \Image (\rd g_u) = \Image (\rd h_v). \]
+	Thus $TM_x$ is well-defined.
+	
+	\begin{proof}[Proof that $TM_x$ is an $m$-dimensional vector space.]
+		Since
+		\[ g^{-1} \colon g(U) \to U \]
+		is a smooth mapping, we can choose an open set $W$ containing $x$ and a smooth map $F \colon W \to \R^m$ that coincides with $g^{-1}$ on $W \cap g(U)$. Setting $U_0 = g^{-1}(W \cap g(U))$, we have the commutative diagram
+		\[ \begin{tikzcd}[column sep=small]
+			& W \ar[dr, "F"] & \\
+			U_0 \ar[ur, "g"] \ar[rr, "\text{inclusion}"] & & \R^m
+		\end{tikzcd} \]
+		and therefore
+		\[ \begin{tikzcd}[column sep=small]
+			& \R^k \ar[dr, "\rd F_x"] & \\
+			\R^m \ar[ur, "\rd g_u"] \ar[rr, "\text{identity}"] & & \R^m.
+		\end{tikzcd} \]
+		This diagram clearly implies that $\rd g_u$ has rank $m$, and hence that its image $TM_x$ has dimension $m$.
+	\end{proof}
+
+	Now consider two smooth manifolds, $M \subset \R^k$ and $N \subset \R^l$, and a smooth map
+	\[ f \colon M \to N \]
+	with $f(x)=y$. The \textit{derivative}\index{derivative}
+	\[ \df_x \colon TM_x \to TN_y \]
+	is defined as follows. Since $f$ is smooth there exist an open set $W$ containing $x$ and a smooth map
+	\[ F \colon W \to \R^l \]
+	that coincides with $f$ on $W \cap M$, \textit{Define $\df_x(v)$ to be equal to $\rd F_x(v)$ for all $v \in TM_x$}.
+	
+	To justify this definition we must prove that $\rd F_x(v)$ belongs to $TN_y$ and that it does not depend on the particular choice of $F$.
+	
+	Choose parametrization
+	\[ g \colon U \to M \subset \R^k \quad \text{and} \quad h \colon V \to N \subset \R^l \]
+	for neighborhoods $g(U)$ of $x$ and $h(V)$ of $y$. Replacing $U$ by a smaller set if necessary, we may assume that $g(U) \subset W$ and that $f$ maps $g(U)$ into $h(V)$. It follows that
+	\[ h^{-1} \circ f \circ g \colon U \to V \]
+	is a well-defined smooth mapping.
+	
+	Consider the commutative diagram
+	\[ \begin{tikzcd}[column sep=huge]
+		W \rar["F"] & \R^l \\
+		U \uar["g"] \rar["h^{-1} \circ f \circ g"] & V \uar["h"']
+	\end{tikzcd} \]
+	of smooth mappings between open sets. Taking derivatives, we obtain a commutative diagram of linear mappings
+	\[ \begin{tikzcd}[column sep=huge]
+		\R^k \rar["\rd F_x"] & \R^l \\
+		\R^m \uar["\rd g_u"] \rar["\rd(h^{-1} \circ f \circ g)_u"] & \R^n, \uar["\rd h_v"']
+	\end{tikzcd} \]
+	where $u = g^{-1}(x)$, $v = h^{-1}(y)$.
+	
+	It follows immediately that $\rd F_x$ carries $TM_x = \Image (\rd g_u)$ into $TN_y = \Image (\rd h_v)$. Furthermore the resulting map $\df_x$ does not depend on the particular choice of $F$, for we can obtain the same linear transformation by going around the bottom of the diagram. That is:
+	\[ \df_x = \rd h_v \circ \rd(h^{-1} \circ f \circ g)_u \circ (\rd g_u)^{-1}. \]
+	This completes the proof that
+	\[ \df_x \colon TM_x \to TN_y \]
+	is a well-defined linear mapping.
+	
+	As before, the derivative operation has two fundamental properties:
+	
+	\begin{enumerate}
+		\item (Chain rule)\index{chain rule}. If $f \colon M \to N$ and $g \colon N \to P$ are smooth, with $f(x)=y$, then
+		\[ \rd(g \circ f)_x = \rd g_y \circ \df_x. \]
+		
+		\item \textit{If $I$ is the identity map of $M$, then $\rd I_x$ is the identity map of $TM_x$. More generally, if $M \subset N$ with inclusion map $i$, then $TM_x \subset TN_x$ with inclusion map $\rd i_x$}. (Compare Figure \ref{fig:2}.)
+
+		\begin{figure}[H]
+			\centering
+			\def\svgwidth{0.9\columnwidth}
+			\import{}{submanifoldtan.pdf_tex}
+			\caption{The tangent space of a submanifold.}
+			\label{fig:2}
+		\end{figure}
+	\end{enumerate}
+
+	The proofs are straightforward.
+	
+	As before, these two properties lead to the following:
+	
+	\begin{assertion}
+		If $f \colon M \to N$ is a diffeomorphism, then $\df_x \colon TM_x \to TN_y$ is an isomorphism of vector spaces. In particular the dimension of $M$ must be equal to the dimension of $N$.
+	\end{assertion}
+
+	\section{Regular values}
+	
+	Let $f \colon M \to N$ be a smooth map between manifolds of the same dimension.\footnote{This restriction will be removed in \S \ref{chap:2}.} We say that $x \in M$ is a \textit{regular point}\index{regular point} of $f$ if the derivative $\df_x$ is nonsingular. In this case it follows from the inverse function theorem that $f$ maps a neighborhood of $x$ in $M$ diffeomorphically onto an open set in $N$. The point $y \in N$ is called a \textit{regular value}\index{regular value} if $f^{-1}(y)$ contains only regular points.
+	
+	If $\df_x$ is singular, then $x$ is called a \textit{critical point}\index{critical point} of $f$, and the image $f(x)$ is called a \textit{critical value}\index{critical value}. Thus each $y \in N$ is either a critical value or a regular value according as $f^{-1}(y)$ does or does not contain a critical point.
+	
+	\textit{Observe that if $M$ is compact and $y \in N$ is a regular value, then $f^{-1}(y)$ is a finite set (possibly empty)}. For $f^{-1}(y)$ is in any case compact, being a closed subset of the compact space $M$; and $f^{-1}(y)$ is discrete, since $f$ is one-one in a neighborhood of each $x \in f^{-1}(y)$.
+	
+	For a smooth $f \colon M \to N$, with $M$ compact, and a regular value $y \in N$, we define $\sharp f^{-1}(y)$\index[symbol]{$\sharp f^{-1}(y)$} to be the number of points in $f^{-1}(y)$. The first observation to be made about $\sharp f^{-1}(y)$ is that it is locally constant as a function of $y$ (where $y$ ranges only through regular values!). I.e., \textit{there is a neighborhood $V \subset N$ of $y$ such that $\sharp f^{-1}(y') = \sharp f^{-1}(y)$ for any $y' \in V$}. [Let $x_1,\cdots,x_k$ be the points of $f^{-1}(y)$, and choose pairwise disjoint neighborhoods $U_1,\cdots,U_k$ of these which are mapped diffeomorphically onto neighborhoods $V_1,\cdots,V_k$ in $N$. We may then take
+	\[ V = V_1 \cap V_2 \cap \cdots \cap V_k - f(M-U_1-\cdots-U_k).] \]
+	
+	\section{The fundamental theorem of algebra}
+	
+	As an application of these notions, we prove the fundamental theorem of algebra\index{fundamental theorem of algebra}: \textit{every nonconstant complex polynomial $P(z)$ must have a zero}.
+	
+	For the proof it is first necessary to pass from the plane of complex numbers to a compact manifold. Consider the unit sphere $\bbS^2 \subset \R^3$ and the stereographic projection\index{stereographic projection}
+	\[ h_+ \colon \bbS^2 - \{(0,0,1)\} \to \R^2 \x 0 \subset \R^3 \]
+	from the ``north pole'' $(0,0,1)$ of $\bbS^2$. (See Figure \ref{fig:3}.) We will identify $\R^2 \x 0$ with the plane of complex numbers. The polynomial map $P$ from $\R^2 \x 0$ to itself corresponds to a map $f$ from $\bbS^2$ to itself; where
+	\begin{align*}
+		f(x) &= h^{-1}_+ P h_+(x) \quad \text{for $x \neq (0,0,1)$} \\
+		f(0,0,1) &= (0,0,1).
+	\end{align*}
+	It is well known that this resulting map $f$ is smooth, even in a neighborhood of the north pole. To see this we introduce the stereographic projection $h_-$ from the south pole $(0,0,-1)$ and set
+	\[ Q(z) = h_- f h_-^{-1}(z). \]
+	Note, by elementary geometry, that
+	\[ h_+h_-^{-1}(z) = \frac z{|z|^2} = 1/\bar z. \]
+	Now if $P(z) = a_0z^n + a_1 z^{n-1} + \cdots + a_n$, with $a_0 \neq 0$, then a short computation shows that
+	\[ Q(z) = \frac{z^n}{\bar a_0 + \bar a_1 z + \cdots + \bar a_n z^n}. \]
+	Thus $Q$ is smooth in a neighborhood of $0$, and it follows that $f = h_-^{-1}Qh_-$ is smooth in a neighborhood of $(0,0,1)$.
+	\begin{figure}[h]
+		\centering
+		\def\svgwidth{.4\columnwidth}
+		\import{}{stepro.pdf_tex}
+		\caption{Stereographic projection}
+		\label{fig:3}
+	\end{figure}
+
+	Next observe that $f$ has only a finite number of critical pointsl for $P$ fails to be a local diffeomorphism only at the zeros of the derivative polynomial $P'(z) = \sum a_{n-j} jz^{j-1}$, and there are only finitely many zeros since $P'$ is not identically zero. The set of regular values of $f$, being a sphere with finitely many points removed, is therefore connected. Hence the locally constant function $\sharp f^{-1}(y)$ must actually be constant on this set. Since $\sharp f^{-1}(y)$ can't be zero everywhere, we conclude that it is zero nowhere. Thus $f$ is an onto mapping, and the polynomial $P$ must have a zero.
+	
+	\chapter[The theorem of Sard and Brown]{The theorem of \\ Sard and Brown}\label{chap:2}
+	\chaptermark{Sard-Brown theorem}
+	
+	In general, it is too much to hope that the set of critical values of a smooth map to be finite. But this set will be ``small'', in the sense indicated by the next theorem, which was proved by A. Sard\index{Sard, A.} in 1942 following earlier work by A. P. Morse\index{Morse, A. P.}. (References \cite{bib30}, \cite{bib24}.)
+	
+	\begin{theorem}
+		Let $f \colon U \to \R^n$ be a smooth map, defined on an open set $U \subset \R^m$, and let
+		\[ C = \{\, x \in U \mid \rank \df_x < n \,\}. \]
+		Then the image $f(C) \subset \R^n$ has Lebesgue measure zero.\footnote{In other words, given any $\eps > 0$, it is possible to cover $f(C)$ by a sequence of cubes in $\R^n$ having total $n$-dimensional volume less than $\eps$.}
+	\end{theorem}
+
+	Since a set of measure zero cannot contain any nonvacuous open set, it follows that the complement $\R^n - f(C)$ must be everywhere dense\footnote{Proved by Arthur B. Brown in 1935. This result was rediscovered by Dubovicki\v{i} in 1953 and by Thom in 1954. (References \cite{bib5}, \cite{bib8}, \cite{bib36}.)}
+	
+	The proof will be given in \S\ref{chap:3}. It is essential for the proof that $f$ should have many derivatives. (Compare Whitney \cite{bib38}.)
+	
+	We will be mainly interested in the case $m \geq n$. If $m < n$, then clearly $C=U$; hence the theorem says simply that $f(U)$ has measure zero.
+	
+	More generally consider a smooth map $f \colon M \to N$, from a manifold of dimension $m$ to a manifold of dimension $n$. Let $C$ be a set of all $x \in M$ such that
+	\[ \df_x \colon TM_x \to TN_{f(x)} \]
+	has rank less than $n$ (i.e. is not onto). Then $C$ will be called the set of \textit{critical points}\index{critical point}, $f(C)$ the set of \textit{critical values}\index{critical value}, and the complement $N-f(C)$ the set of \textit{regular values}\index{regular value} of $f$. (This agrees with our previous definitions in the case $m=n$.) Since $M$ can be covered by a countable collection of neighborhoods each diffeomorphic to an open subset of $\R^m$, we have
+	
+	\begin{corollary}[A. B. Brown]\index{A. B. Brown}
+		The set of regular values of a smooth map $f \colon M \to N$ is everywhere dense in $N$.
+	\end{corollary}
+
+	In order to exploit this corollary we will need the following:
+	
+	\begin{lemma}\label{lem:1}
+		If $f \colon M \to N$ is a smooth map between manifolds of dimension $m \geq n$, and if $y \in N$ is a regular value, then the set $f^{-1}(y) \subset M$ is a smooth manifold of dimension $m-n$.
+	\end{lemma}
+
+	\begin{proof}
+		Let $x \in f^{-1}(y)$. Since $y$ is a regular value, the derivative $\df_x$ must map $TM_x$ onto $TN_y$. The null space $\mathfrak N \subset TM_x$ of $\df_x$ will therefore be an $(m-n)$-dimensional vector space.
+		
+		If $M \subset \R^k$, choose a linear map $L \colon \R^k \to \R^{m-n}$ that is nonsingular on this subspace $\mathfrak N \subset TM_x \subset \R^k$. Now define
+		\[ F \colon M \to N \x \R^{m-n} \]
+		by $F(\xi) = (f(\xi),L(\xi))$. The derivative $\rd F_x$ is clearly given by the formula
+		\[ \rd F_x(v) = (\df_x(v),L(v)). \]
+		Thus $\rd F_x$ is nonsingular. Hence $F$ maps some neighborhood $U$ of $x$ diffeomorphically onto a neighborhood $V$ of $(y,L(x))$. Note that $f^{-1}(y)$ corresponds, under $F$, to the hyperplane $y \x \R^{m-n} \cap V$. This proves that $f^{-1}(y)$ is a smooth manifold of dimension $m-n$.
+	\end{proof}
+
+	As an example we can give an easy proof that the unit sphere $\bbS^{m-1}$ is a smooth manifold. Consider the function $f \colon \R^m \to \R$ defined by
+	\[ f(x) = x_1^2 + x_2^2 + \cdots + x_m^2. \]
+	Any $y \neq 0$ is a regular value, and the smooth manifold $f^{-1}(1)$ is the unit sphere.
+	
+	If $M'$ is a manifold which is contained in $M$, it has already been noted that $TM'_x$ is a subspace of $TM_x$ for $x \in M'$. The orthogonal complement of $TM'_x$ in $TM_x$ is then a vector space of dimension $m-m'$ call \textit{the space of normal vectors to $M'$ in $M$ at $x$}\index{normal vector}\index{space of normal vectors}.
+	
+	In particular let $M' = f^{-1}(y)$ for a regular value $y$ of $f \colon M \to N$.
+	
+	\begin{lemma}\label{lem:2}
+		The null space of $\df_x \colon TM_x \to TN_y$ is precisely equal to the tangent space $TM'_x \subset TM_x$ of the submanifold $M' = f^{-1}(y)$. Hence $\df_x$ maps the orthogonal complement of $TM'_x$ isomorphically onto $TN_y$.
+	\end{lemma}
+
+	\begin{proof}
+		From the diagram
+		\[\begin{tikzcd}
+			M' \rar["i"] \dar & M \dar["f"] \\
+			y \rar & N
+		\end{tikzcd}\]
+		we see that $\df_x$ maps the subspace $TM'_x \subset TM_x$ to zero. Counting dimensions we see that \textit{$\df_x$ maps the space of normal vectors to $M'$ isomorphically onto $TN_y$}.
+	\end{proof}
+
+	\section{Manifolds with boundary}
+	
+	The lemma above can be sharpened so as to apply to a map defined on a smooth ``manifold with boundary''\index{manifold with boundary}\index{boundary}. Consider first the closed half-space\index{half-space}
+	\[ \bbH^m\index[symbol]{$\bbH^m$} = \{\, (x_1,\cdots,x_m) \in \R^m \mid x_m \geq 0 \,\}. \]
+	The \textit{boundary}\index{boundary} $\partial \bbH^m$ is defined to be the hyperplane $\R^{m-1} \x 0 \subset \R^m$.
+	
+	\begin{definition}
+		A subset $X \subset \R^k$ is called a \textit{smooth $m$-manifold with boundary}\index{smooth $m$-manifold with boundary} if each $x \in X$ has a neighborhood $U \cap X$ diffeomorphic to an open subset $V \cap \bbH^m$ of $\bbH^m$. The \textit{boundary}\index{boundary} $\partial X$\index[symbol]{$\partial X$} is the set of all points in $X$ which correspond to points of $\partial\bbH^m$ under such a diffeomorphism.
+		
+		It is not hard to show that $\partial X$ is a well-defined smooth manifold of dimension $m-1$. The \textit{interior}\index{interior} $X - \partial X$ is a smooth manifold of dimension $m$.
+		
+		The tangent space\index{tangent space} $TX_x$ is defined just as in \S\ref{chap:1}, so that $TX_x$ is a full $m$-dimensional vector space, even if $x$ is a boundary point.
+	\end{definition}
+
+	Here is one method for generating examples. Let $M$ be a manifold without boundary and let $g \colon M \to \R$ have $0$ as regular value.
+	
+	\begin{lemma}\label{lem:3}
+		The set of $x$ in $M$ with $g(x) \geq 0$ is a smooth manifold, with boundary equal to $g^{-1}(0)$.
+	\end{lemma}
+
+	The proof is just like the proof of Lemma \ref{lem:1}.
+	
+	\begin{example}
+		The \textit{unit disk}\index{disk} $\bbD^m$\index[symbol]{$\bbD^m$}, consisting of all $x \in \R^m$ with
+		\[ 1 - \sum x_i^2 \geq 0, \]
+		is a smooth manifold, with boundary equals to $\bbS^{m-1}$.
+	\end{example}
+
+	Now consider a smooth map $f \colon X \to N$ from an $m$-manifold with boundary to an $n$-manifold, where $m>n$.
+	
+	\begin{lemma}\label{lem:4}
+		If $y \in N$ is a regular value, both for $f$ and for the restriction $f|_{\partial X}$, then $f^{-1}(y) \subset X$ is a smooth $(m-n)$-manifold with boundary. Furthermore the boundary $\partial(f^{-1}(y))$ is precisely equal to the intersection of $f^{-1}(y)$ with $\partial X$.
+	\end{lemma}
+
+	\begin{proof}
+		Since we have to prove a local property, it suffices to consider the special case of a map $f \colon \bbH^m \to \R^n$, with regular value $y \in \R^n$. Let $\bar x \in f^{-1}(y)$. If $\bar x$ is an interior point, then as before $f^{-1}(y)$ is a smooth manifold in the neighborhood of $\bar x$.
+		
+		Suppose the $\bar x$ is a boundary point. Choose a smooth map $g \colon U \to \R^n$ that is defined throughout a neighborhood of $\bar x$ in $\R^m$ and coincides with $f$ on $U \cap \bbH^m$. Replacing $U$ by a smaller neighborhood if necessary, we may assume that $g$ has no critical points. Hence $g^{-1}(y)$ is a smooth manifold of dimension $m-n$.
+		
+		Let $\pi \colon g^{-1}(y) \to \R$ denote the coordinate projection,
+		\[ \pi(x_1,\cdots,x_m) = x_m. \]
+		We claim that $\pi$ has $0$ as a regular value. For the tangent space of $g^{-1}(y)$ at a point $x \in \pi^{-1}(0)$ is equal to the null space of
+		\[ \rd g_x = \df_x \colon \R^m \to \R^n; \]
+		but the hypothesis that $f|_{\partial \bbH^m}$ is regular at $x$ guarantees that this null space cannot be completely contained in $\R^{m-1} \x 0$.
+		
+		Therefore the set $g^{-1}(y) \cap \bbH^m = f^{-1}(y) \cap U$, consisting of all $x \in g^{-1}(y)$ with $\pi(x) \geq 0$, is a smooth manifold, by Lemma \ref{lem:3}; with boundary equal to $\pi^{-1}(0)$. This completes the proof.
+	\end{proof}
+
+	\section{The Brouwer fixed point theorem}
+	
+	We now apply this result to prove the key lemma leading to the classical Brouwer\index{Brouwer, L. E. J.} fixed point\index{fixed point} theorem\index{Brouwer fixed point theorem}. Let $X$ be a compact manifold with boundary.
+	
+	\begin{lemma}\label{lem:5}
+		There is no smooth map $f \colon X \to \partial X$ that leaves $\partial X$ point-wise fixed.
+	\end{lemma}
+
+	\begin{proof}*[following M. Hirsch\index{Hirsch, M.}]
+		Suppose there were such a map $f$. Let $y \in \partial X$ be a regular value for $f$. Since $y$ is certainly a regular value for the identity map $f|_{\partial X}$ also, it follows that $f^{-1}(y)$ is a smooth $1$-manifold, with boundary consisting of the single point
+		\[ f^{-1}(y) \cap \partial X = \{y\}. \]
+		But $f^{-1}(y)$ is also compact, and the only compact $1$-manifolds are finite disjoint unions of circle and segments\footnote{A proof is given in the Appendix.}, so that $\partial f^{-1}(y)$ must consist of an even number of points. This contradiction establishes the lemma.
+	\end{proof}
+
+	In particular the unit disk
+	\[ \bbD^n = \{\, x \in \R^n \mid x_1^2 + \cdots + x_n^2 \leq 1 \,\} \]
+	is a compact manifold bounded by the unit sphere $\bbS^{n-1}$. Hence as a special case we have proved the the \textit{identity map of $\bbS^{n-1}$ cannot be extended to a smooth map $\bbD^n \to \bbS^{n-1}$}.
+	
+	\begin{lemma}\label{lem:6}
+		Any smooth map $g \colon \bbD^n \to \bbD^n$ has a fixed point\index{fixed point} (i.e. a point $x \in \bbD^n$ with $g(x)=x$).
+	\end{lemma}
+
+	\begin{proof}
+		Suppose $g$ has no fixed point. For $x \in \bbD^n$, let $f(x) \in \bbS^{n-1}$ be the point nearer $x$ than $g(x)$ on the line through $x$ and $g(x)$. (See Figure \ref{fig:4}.) Then $f \colon \bbD^n \to \bbS^{n-1}$ is a smooth map with $f(x)=x$ for $x \in \bbS^{n-1}$, which is impossible by Lemma \ref{lem:5}. (To see that $f$ is smooth we make the following explicit computation: $f(x)=x+tu$, where
+		\[ u = \frac{x-g(x)}{\norm{x-g(x)}}, \quad t = -x \cdot u + \sqrt{1 - x \cdot x + (x \cdot u)^2}, \]
+		the expression under the square root sign being strictly positive. Here and subsequently $\norm{x}$\index[symbol]{$\norm{x}$} denote the Euclidean length\index{Euclidean length} $\sqrt{x_1^2 + \cdots + x_n^2}$.)
+	\end{proof}
+
+	\begin{figure}[t]
+		\centering
+		\def\svgwidth{.4\columnwidth}
+		\import{}{lem6.pdf_tex}
+		\caption{Figure in the proof of Lemma \ref{lem:6}.}
+		\label{fig:4}
+	\end{figure}
+
+	\begin{brouwer}
+		Any continuous function $G \colon \bbD^n \to \bbD^n$ has a fixed point.
+	\end{brouwer}
+
+	\begin{proof}
+		We reduce this theorem to the lemma by approximating $G$ by a smooth mapping. Given $\eps > 0$, according to the Weierstrass approximation theorem\footnote{See for example Dieudonne \cite[p. 133]{bib7}.}, there is a polynomial function $P_1 \colon \R^n \to \R^n$ with $\norm{ P_1(x) - G(x) } < \eps$ for $x \in \bbD^n$. However, $P_1$ may send points of $\bbD^n$ into points outside of $\bbD^n$. To correct this we set
+		\[ P(x) = \frac{P_1(x)}{1+\eps}. \]
+		Then clearly $P$ maps $\bbD^n$ into $\bbD^n$ and $\norm{P(x)-G(x)}<2\eps$ for $x \in \bbD^n$.
+		
+		Suppose the $G(x) \neq x$ for all $x \in \bbD^n$. Then the continuous function $\norm{G(x)-x}$ must take on a minimum $\mu > 0$ on $\bbD^n$. Choosing $P \colon \bbD^n \to \bbD^n$ as above, with $\|P(x) - G(x)\|<\mu$ for all $x$, we clearly have $P(x) \neq x$. Thus $P$ is a smooth map from $\bbD^n$ to itself without a fixed point. This contradicts Lemma \ref{lem:6}, and completes the proof.
+	\end{proof}
+
+	The procedure employed here can frequently be applied in more general situations: to prove a proposition about continuous mappings, we first establish the result for smooth mappings and then try to use an approximation theorem to pass to the continuous case. (Compare \S\ref{chap:8}, Problem \ref{prob:4}.)
+
+	\chapter[Proof of Sard's theorem]{Proof of Sard's theorem\protect\footnote{Our proof is based on that given by Pontryagin\index{Pontryagin, L.} \cite{bib28}. The details are somewhat easier since we assume that $f$ is infinitely differentiable.}}\label{chap:3}
+	\chaptermark{Proof of Sard's theorem}
+	\sectionmark{Proof of Sard's theorem}
+	
+	First let us recall the statement:
+	
+	\begin{sard}\index{Sard, A.}
+		Let $f \colon U \to \R^p$ be a smooth map, with $U$ open in $\R^n$, and let $C$ be the set of critical points; that is the set of all $x \in U$ with
+		\[ \rank \df_x < p. \]
+		Then $f(C) \subset \R^p$ has measure zero.
+	\end{sard}
+	
+	\begin{remark}
+		The cases where $n \leq p$ are comparatively easy. (Compare de Rham \cite[p. 10]{bib29}.) We will, however, give a unified proof which makes these cases look just as bad as others.
+	\end{remark}
+
+	The proof will be by induction on $n$. Note that the statement makes sense for $n \geq 0$, $p \geq 1$. (By definition $\R^0$ consists of a single point.) To start the induction, the theorem is certainly true for $n=0$.
+	
+	Let $C_1 \subset C$ denote the set of all $x \in U$ such that the first derivative $\df_x$ is zero. More generally let $C_i$ denote the set of $x$ such that all partial derivatives of $f$ of order $\leq i$ vanish at $x$. Thus we have a descending sequence of closed sets
+	\[ C \supset C_1 \supset C_2 \supset C_3 \supset \cdots. \]
+	The proof will be divided into three steps as follows:
+	
+	\textbf{Step 1}. The image $f(C-C_1)$ has measure zero.
+	
+	\textbf{Step 2}. The image $f(C_i-C_{i+1})$ has measure zero, for $i \geq 1$.
+	
+	\textbf{Step 3}. The image $f(C_k)$ has measure zero for $k$ sufficiently large.
+	
+	\addvspace{1em}
+	
+	(\textit{Remark}.\hspace{1em}The $f$ happens to be real analytic, then the intersection of the $C_i$ is vacuous unless $f$ is constant on an entire component of $U$. Hence in this case it is sufficient to carry out Steps 1 and 2.)
+	
+	\begin{proof}[Proof of Step 1.]
+		This first step is perhaps the hardest. We may assume that $p \geq 2$, since $C = C_1$ when $p=1$. We will need the well known theorem of Fubini\index{Fubini theorem}\footnote{For an easy proof (as well as an alternative proof of Sard's theorem) see Sternberg\cite[pp. 51-52]{bib35}. Sternberg assumes that $A$ is compact, but the general case follows easily from this special case.} which asserts that a \textit{measurable set}\index{measurable set}
+		\[ A \subset \R^p = \R^1 \x \R^{p-1} \]
+		\textit{must have measure zero if it intersects each hyperplane} $\text{(constant)} \x \R^{p-1}$ \textit{in a set of $(p-1)$-dimensional measure zero}.
+		
+		For each $\bar x \in C - C_1$ will find an open neighborhood $V \subset \R^n$ so that $f(V \cap C)$ has measure zero. Since $C-C_1$ is covered by countably many of these neighborhoods, this will prove that $f(C-C_1)$ has measure zero.
+		
+		Since $\bar x \notin C_1$, there is some partial derivative, say $\pderiv{f_1}{x_1}$, which is not zero at $\bar x$. Consider the map $h \colon U \to \R^n$ defined by
+		\[ h(x) = (f_1(x),x_2,\cdots,x_n). \]
+		Since $\rd h_{\bar x}$ is nonsingular, $h$ maps some neighborhood $V$ of $\bar x$ diffeomorphically onto an open set $V'$. The composition $g = f \circ h^{-1}$ will then map $V'$ into $\R^p$. Note that the set $C'$ of critical points of $g$ is precisely $h(V \cap C)$; hence the set $g(C')$ of critical values of $g$ is equal to $f(V \cap C)$.
+		
+		\begin{figure}[t]
+			\centering
+			\def\svgwidth{0.6\columnwidth}
+			\import{}{sardstep1.pdf_tex}
+			\caption{Construction of the map $g$.}
+			\label{fig:5}
+		\end{figure}
+	
+		For each $(t,x_2,\cdots,x_n) \in V'$ note that $g(t,x_2,\cdots,x_n)$ belongs to the hyperlane $t \x \R^{p-1} \subset \R^p$: thus $g$ carries hyperplanes into hyperplanes. Let
+		\[ g^t \colon (t \x \R^{n-1}) \cap V' \to t \x \R^{p-1} \]
+		denote the restriction of $g$. Note that a point of $t \x \R^{n-1}$ is critical for $g^t$ if and only if it is critical for $g$; for the matrix of first derivatives of $g$ has the form
+		\[ \br{\pderiv{g_i}{x_j}} = \begin{pmatrix}
+			1 & 0 \\
+			* & \br{\frac{\partial g_i^t}{\partial x_j}}
+		\end{pmatrix}. \]
+		
+		According to the induction hypothesis, the set of critical values of $g^t$ has measure zero in $t \x \R^{p-1}$. Therefore the set of critical values of $g$ intersects each hyperplane $t \x \R^{p-1}$ in a set of measure zero. This set $g(C')$ is measurable, since it can be expressed as a countable union of compact subsets. Hence, by Fubini's theorem, the set
+		\[ g(C') = f(V \cap C) \]
+		has measure zero, and Step 1 is complete.
+	\end{proof}
+
+	\begin{proof}[Proof of Step 2.]
+		For each $\bar x \in C_k - C_{k+1}$ there is some $(k+1)$-st derivative $\frac{\partial^{k+1} f_r}{\partial x_{s_1} \cdots \partial x_{s_{k+1}}}$ which is not zero. Thus the function
+		\[ w(x) = \frac{\partial^k f_r}{\partial x_{s_2} \cdots \partial x_{s_{k+1}}} \]
+		vanishes at $\bar x$ but $\frac{\partial w}{\partial x_{s_1}}$ does not. Suppose for definiteness that $s_1=1$. Then the map $h \colon U \to \R^n$ defined by
+		\[ h(x) = (w(x),x_2,\cdots,x_n) \]
+		carries some neighborhood $V$ of $\bar x$ diffeomorphically onto an open set $V'$. Note that $h$ carries $C_k \cap V$ into the hyperplane $0 \x \R^{n-1}$. Again we consider
+		\[ g = f \circ h^{-1} \colon V' \to \R^p. \]
+		Let
+		\[ \bar g \colon (0 \x \R^{n-1}) \cap V' \to \R^p \]
+		denote the restriction of $g$. By induction, the set of critical values of $\bar g$ has measure zero in $\R^p$. But each point in $h(C_k \cap V)$ is certainly a critical point of $\bar g$ (since all derivatives of order $\leq k$ vanish). Therefore
+		\[ \bar g h(C_k \cap V) = f(C_k \cap V)\text{ has measure zero}. \]
+		Since $C_k - C_{k+1}$ is covered by countably many such sets $V$, it follows that $f(C_k - C_{k+1})$ has measure zero.
+	\end{proof}
+
+	\begin{proof}[Proof of Step 3.]
+		Let $I^n \subset U$ be a cube with edge $\delta$. If $k$ is sufficiently large ($k > n/p$ to be precise) we will prove that $f(C_k \cap I^n)$ has measure zero. Since $C_k$ can be covered by countably many such cubes, this will prove that $f(C_k)$ has measure zero.
+		
+		From Taylor's theorem\index{Taylor's theorem}, the compactness of $I^n$, and the definition of $C_k$, we see that
+		\[ f(x+h) = f(x) + R(x,h) \]
+		where
+		\begin{equation}\label{eq:3.1}
+			\norm{R(x,h)} \leq c \norm{h}^{k+1}
+		\end{equation}
+		for $x \in C_k \cap I^n$, $x+h \in I^n$. Here $c$ is a constant which depends only on $f$ and $I^n$. Now subdivide $I^n$ into $r^n$ cubes of edge $\delta/r$. Let $I_1$ be a cube of the subdivision which contains a point $x$ of $C_k$. Then any point of $I_1$ can be written as $x+h$, with
+		\begin{equation}\label{eq:3.2}
+			\norm{h} \leq \sqrt{n} (\delta/r).
+		\end{equation}
+		From \eqref{eq:3.1} it follows that $f(I_1)$ lies in a cube of edge $a/r^{k+1}$ centered about $f(x)$, where $a=2c(\sqrt n \delta)^{k+1}$ is constant. Hence $f(C_k \cap I^n)$ is contained in a union of at most $r^n$ cubes having total volume
+		\[ V \leq r^n\br{\frac a {r^{k+1}}}^p = a^p r^{n-(k+1)p}. \]
+		If $k+1>n/p$, then evidently $V$ tends to $0$ as $r \to \infty$; so $f(C_k \cap I^n)$ must have measure zero. This completes the proof of Sard's theorem.
+	\end{proof}
+
+	\chapter[The degree modulo 2 of a mapping]{The degree modulo 2 \\ of a mapping}\label{chap:4}
+	\chaptermark{The degree modulo 2 of a mapping}
+	
+	Consider a smooth map $f \colon \bbS^n \to \bbS^n$. If $y$ is a regular value, recall that $\sharp f^{-1}(y)$ denotes the number of solutions $x$ to the equation $f(x)=y$. We will prove that \textit{the residue class\index{residue class} modulo $2$ of $\sharp f^{-1}(y)$ does not depend on the choice of the regular value $y$}. This residue class is called the mod 2 degree of $f$. More generally this same definition works for any smooth map
+	\[ f \colon M \to N \]
+	where $M$ is compact without boundary, $N$ is connected, and both manifolds have the same dimension. (We may as well assume also that $N$ is compact without boundary, since otherwise the mod 2 degree would necessarily be zero.) For the proof we introduce two new concepts.
+	
+	\section{Smooth homotopy and smooth isotopy}
+	
+	Given $X \subset \R^k$, let $X \x [0,1]$ denote the subset\footnote{If $M$ is a smooth manifold without boundary, then $M \x [0,1]$ is a smooth manifold bounded by two ``copies'' of $M$. Boundary points of $M$ will give rise to ``corner'' points of $M \x [0,1]$.} of $\R^{k+1}$ consisting of all $(x,t)$ with $x \in X$ and $0 \leq t \leq 1$. Two mappings
+	\[ f,g \colon X \to Y \]
+	are called \textit{smoothly homotopic}\index{smoothly homotopic} (abbreviated $f \sim g$\index[symbol]{$f \sim g$}) if there exists a smooth map $F \colon X \x [0,1] \to Y$ with
+	\[ F(x,0) = f(x), \quad F(x,1) = g(x) \]
+	for all $x \in X$. This map $F$ is called a \textit{smooth homotopy}\index{smooth homotopy}\index{homotopy} between $f$ and $g$.
+	
+	Note that the relation of smooth homotopy is an equivalence relation. To see that it is transitive we use the existence of a smooth function $\fai \colon [0,1] \to [0,1]$ with
+	\[ \fai(t) = \left\{\begin{array}{ll}
+		0, & \quad 0 \leq t \leq \frac13, \\
+		1, & \quad \frac23 \leq t \leq 1.
+	\end{array}\right. \]
+	(For example, let $\fai(t) = \frac{\la(t-\frac13)}{\la(t-\frac13)+\la(\frac23-t)}$, where $\la(\tau)=0$ for $\tau \leq 0$ and $\la(\tau) = \exp(-\tau^{-1})$ for $\tau>0$.) Given a smooth homotopy $F$ between $f$ and $g$, the formula $G(x,t)=F(x,\fai(t))$ defines a smooth homotopy $G$ with
+	\[ G(x,t) = \left\{\begin{array}{ll}
+		\! f(x), & \quad 0 \leq t \leq \frac13, \\
+		g(x), & \quad \frac23 \leq t \leq 1.
+	\end{array}\right. \]
+	Now if $f \sim g$ and $g \sim h$, then with the aid of this construction, it is easy to prove that $f \sim h$.
+	
+	If $f$ and $g$ happen to be diffeomorphisms from $X$ to $Y$, we can also define the concept of a ``smooth isotopy'' between $f$ and $g$. This also will be an equivalence relation.
+	
+	\begin{definition}
+		The diffeomorphism $f$ is \textit{smoothly isotopic}\index{smoothly isotopic}\index{isotopic} to $g$ if there exists a smooth homotopy $F \colon X \x [0,1] \to Y$ from $f$ to $g$ so that, for each $t \in [0,1]$, the correspondence
+		\[ x \mapsto F(x,t) \]
+		maps $X$ diffeomorphically onto $Y$.
+	\end{definition}
+
+	It will turn out that the mod 2 degree of a map depends only on its smooth homotopy class:
+	
+	\begin{homotopylemma}\index{homotopy lemma}
+		Let $f,g \colon M \to N$ be smoothly homotopic maps between manifolds of the same dimension, where $M$ is compact and without boundary. If $y \in N$ is a regular value for both $f$ and $g$, then
+		\[ \sharp f^{-1}(y) = \sharp g^{-1}(y) \quad (\mod 2). \]
+	\end{homotopylemma}
+
+	\begin{proof}
+		Let $F \colon M \x [0,1] \to N$ be a smooth homotopy between $f$ and $g$. First suppose that $y$ is also a regular value for $F$. Then $F^{-1}(y)$ is a compact $1$-manifold, with boundary equal to
+		\[ F^{-1}(y) \cap (M \x 0 \cup M \x 1) = f^{-1}(y) \x 0 \cup g^{-1}(y) \x 1. \]
+		Thus the total number of boundary points of $F^{-1}(y)$ is equal to
+		\[ \sharp f^{-1}(y) + \sharp g^{-1}(y). \]
+		But we recall from \S\ref{chap:2} that compact $1$-manifold always has an even number of boundary points. Thus $\sharp f^{-1}(y) + \sharp g^{-1}(y)$ is even, and therefore
+		\[ \sharp f^{-1}(y) \equiv \sharp g^{-1}(y) \quad (\mod 2). \]
+		\begin{figure}[t]
+			\centering
+			\def\svgwidth{0.5\columnwidth}
+			\import{}{homotopylemma.pdf_tex}
+			\caption{The number of boundary points on the left is congruent to the number on the right modulo 2.}
+			\label{fig:6}
+		\end{figure}
+		
+		Now suppose that $y$ is not a regular value of $F$. Recall (from \S\ref{chap:1}) that $\sharp f^{-1}(y')$ and $\sharp g^{-1}(y')$ are locally constant functions of $y'$ (as long as we stay away from critical values). Thus there is a neighborhood $V_1 \subset N$ of $y$, consisting of regular values of $f$, so that
+		\[ \sharp f^{-1}(y') = \sharp f^{-1}(y) \]
+		for all $y' \in V_1$; and there is an analogous neighborhood $V_2 \subset N$ so that
+		\[ \sharp g^{-1}(y') = \sharp g^{-1}(y) \]
+		for all $y' \in V_2$. Choose a regular value $z$ of $F$ within $V_1 \cap V_2$. Then
+		\[ \sharp f^{-1}(y) = \sharp f^{-1}(z) \equiv \sharp g^{-1}(z) = \sharp g^{-1}(y), \]
+		which complete the proof.
+	\end{proof}
+
+	We will also need the following:
+	
+	\begin{homogeneitylemma}\index{homogeneity lemma}
+		Let $y$ and $z$ be arbitrary interior points of the smooth, connected manifold $N$. Then there exists a diffeomorphism $h \colon M \to N$ that is smoothly isotopic to the identity and carries $y$ into $z$.
+	\end{homogeneitylemma}
+	
+	(For the special case $N = \bbS^n$ the proof is easy: simply choose h to be the rotation which carries $y$ into $z$ and leaves fixed all vectors orthogonal to the plane through $y$ and $z$.)
+	
+	The proof in general proceeds as follows: we will first construct a smooth isotopy from $\R^n$ to itself which
+		
+		\begin{enumerate}
+			\item leaves all points outside of the unit ball fixed, and
+			\item slides the origin to any desired point of the open unit ball.
+		\end{enumerate}
+
+	\begin{figure}[H]
+		\centering
+		\def\svgwidth{0.6\columnwidth}
+		\import{}{homogeneitylemma.pdf_tex}
+		\caption{Deforming the unit ball.}
+		\label{fig:7}
+	\end{figure}
+
+	Let $\fai \colon \R^n \to \R$ be a smooth function which satisfies
+	\begin{align*}
+		\fai(x) &> 0 \quad \text{for} \quad \norm{x} < 1, \\
+		\fai(x) &= 0 \quad \text{for} \quad \norm{x} \geq 1.
+	\end{align*}
+	(For example let $\fai(x)=\la(1-\norm{x}^2)$ where $\la(t) = 0$ for $t \leq 0$ and $\la(t) = \exp(-t^{-1})$ for $t > 0$.) Given and fixed unit vector $c \in \bbS^{n-1}$, consider the differential equations
+	\[ \deriv{x_i}{t} = c_i \fai(x_1,\cdots,x_n); \quad i=1,\cdot,n. \]
+	For any $\bar x \in \R^n$ these equations have a unique solution $x=x(t)$, defined for all\footnote{Compare \cite[\S 2.4]{bib22}.} real numbers, which satisfies the initial condition
+	\[ x(0) = \bar x. \]
+	We will use the notation $x(t) = F_t(\bar x)$ for this solution. Then clearly
+	
+	\begin{enumerate}
+		\item $F_t(\bar x)$ is defined for all $t$ and $\bar x$ and depends smoothly on $t$ and $\bar x$,
+		\item $F_0(\bar x) = \bar x$,
+		\item $F_{s+t}(\bar x) = F_s \circ F_t(\bar x)$.
+	\end{enumerate}
+	Therefore each $F_t$ is a diffeomorphism from $\R^n$ onto itself. Letting $t$ vary, we see that each $F_t$ is smoothly isotopic to the identity under an isotopy which leaves all points outside of the unit ball fixed. But clearly, with suitable choice of $c$ and $t$; the diffeomorphism $F_t$ will carry the origin to any desired point in the open unit ball.
+	
+	Now consider a connected manifold $N$. Call two points of $N$ ``isotopic''\index{isotopic} if there exists a smooth isotopy carrying one to the other. This is clearly an equivalence relation. If $y$ is an interior point, then it has a neighborhood diffeomorphic to $\R^n$; hence the above argument shows that every point sufficiently close to $y$ is ``isotopic'' to $y$. In other words, each ``isotopy class'' of points in the interior of $N$ is an open set, and the interior of $N$ is partitioned into disjoint open isotopy classes. But the interior of $N$ is connected; hence there can be only one such isotopy class. This completes the proof.
+	
+	We can now prove the main result of this section. Assume that $M$ is compact and boundaryless, that $N$ is connected, and that $f \colon M \to N$ is smooth.
+	
+	\begin{theorem}
+		If $y$ and $z$ are regular values of $f$ then
+		\[ \sharp f^{-1}(y) \equiv \sharp f^{-1}(z) \quad (\mod 2). \]
+		This common residue class, which is called the \textit{$\mod 2$ degree of $f$}\index{$\mod 2$ degree}, depends only on the smooth homotopy class of $f$.
+	\end{theorem}
+
+	\begin{proof}
+		Given regular values $y$ and $z$, let $h$ be a diffeomorphism from $N$ to $N$ which is isotopic to the identity and which carries $y$ to $z$. Then $z$ is a regular value of the composition $h \circ f$. Since $h \circ f$ is homotopic to $f$, the Homotopy Lemma asserts that
+		\[ \sharp (h \circ f)^{-1}(z) \equiv \sharp f^{-1}(z) \quad (\mod 2). \]
+		But
+		\[ (h \circ f)^{-1}(z) = (f^{-1} \circ h^{-1})(z) = f^{-1}(y), \]
+		so that
+		\[ \sharp(h \circ f)^{-1}(z) = \sharp f^{-1}(y). \]
+		Therefore
+		\[ \sharp f^{-1}(y) \equiv \sharp f^{-1}(z) \quad (\mod 2), \]
+		as required.
+		
+		Call this common residue class $\deg_2(f)$\index{$\deg_2(f)$}. Now suppose that $f$ is smoothly homotopic to $g$. By Sard's theorem, there exists an element $y \in N$ which is a regular value for both $f$ and $g$. The congruence
+		\[ \deg_2 f \equiv \sharp f^{-1}(y) \equiv \sharp g^{-1}(y) \equiv \deg_2 g \quad (\mod 2) \]
+		now shows that $\deg_2 f$ is a smooth homotopy invariant, and completes the proof.
+	\end{proof}
+
+	\begin{examples}
+		A constant map $c \colon M \to M$ has even mod 2 degree. The identity map $I$ of $M$ has odd degree. \textit{Hence the identity map of a compact boundaryless manifold is not homotopic to a constant}.
+		
+		In the case $M = \bbS^n$, this result implies the assertion that no smooth map $f \colon \bbD^{n+1} \to \bbS^n$ leaves the sphere pointwise fixed. (I.e., the sphere is not a smooth ``retract'' of the disk. Compare \S\ref{chap:2}, Lemma \ref{lem:5}.) For such a map $f$ would give rise to a smooth homotopy
+		\[ F \colon \bbS^n \x [0,1] \to \bbS^n, \quad F(x,t)=f(tx), \]
+		between a constant map and the identity.
+	\end{examples}
+
+	\chapter{Oriented manifolds}\label{chap:5}
+	
+	In order to define the degree as an integer (rather than an integer modulo 2) we must introduce orientations.
+	
+	\begin{definitions}
+		An orientation\index{orientation} for a finite dimensional real vector space is an equivalence class of ordered bases as follows: the ordered basis $(b_1,\cdots,b_n)$ determines the \textit{same orientation}\index{same orientation} as the basis $(b_1',\cdots,b_n')$ if $b_i' = \sum a_{ij}b_j$ with $\det(a_{ij})>0$. It determines the \textit{opposite orientation}\index{opposite orientation} if $\det(a_{ij})<0$. Thus each positive dimensional vector space has precisely two orientations. The vector space $\R^n$ has a \textit{standard} orientation\index{standard orientation} corresponding to the basis $(1,0,\cdots,0), (0,1,0,\cdots,0), \cdots, (0,\cdots,0,1)$.
+		
+		In the case of the zero dimensional vector space it is convenient to define an ``orientation'' as the symbol $+1$ or $-1$.
+		
+		An \textit{oriented} smooth manifold \index{oriented smooth manifold} consists of a manifold $M$ together with a choice of orientation for each tangent space $TM_x$. If $m \geq 1$, these are required to fit together as follows: For each point of $M$ there should exist a neighborhood $U \subset M$ and a diffeomorphism $h$ mapping $U$ onto an open subset of $\R^m$ or $\bbH^m$ which is \textit{orientation preserving}\index{orientation preserving}, in the sense that for each $x \in U$ the isomorphism $\rd h_x$ carries the specified orientation for $TM_x$ into the standard orientation for $\R^m$.
+	\end{definitions}
+	 
+	 If $M$ is connected and orientable, then it has precisely two orientations.
+	 
+	 If $M$ has a boundary, we can distinguish three kinds of vectors in the tangent space $TM_x$ at a boundary point:
+	 
+	 \begin{enumerate}
+	 	\item there are the vectors tangent to the boundary, forming an $(m-1)$-dimensional subspace $T(\partial M)_x \subset TM_x$;
+	 	\item there are the ``outward'' vectors, forming an open half space bounded by $T(\partial M)_x$;
+	 	\item there are the ``inward'' vectors forming a complementary half space.
+	 \end{enumerate}
+ 
+ 	Each orientation for $M$ determines an orientation for $\partial M$ as follows: For $x \in \partial M$ choose a positively oriented basis $(v_1,v_2,\cdots,v_m)$ for $TM_x$ in such a way that $v_2,\cdots,v_m$ are tangent to the boundary (assuming that $m \geq 2$) and that $v_1$ is an ``outward'' vector. Then $(v_2,\cdots,v_m)$ determines the required orientation for $\partial M$ at $x$.
+ 	
+ 	If the dimension of $M$ is $1$, then each boundary point $x$ is assigned the orientation $-1$ or $+1$ according as a positively oriented vector at $x$ points inward or outward. (See Figure \ref{fig:8}.)
+ 	
+ 	\begin{figure}[t]
+ 		\centering
+ 		\def\svgwidth{0.6\columnwidth}
+ 		\import{}{orient.pdf_tex}
+ 		\caption{How to orient a boundary.}
+ 		\label{fig:8}
+ 	\end{figure}
+ 
+ 	As an example the unit sphere $\bbS^{m-1} \subset \R^m$ can be oriented as the boundary of the disk $\bbD^m$.
+ 	
+ 	\section{The Brouwer degree}\index{Brouwer, L. E. J.}
+ 	
+ 	Now let $M$ and $N$ be oriented $n$-dimensional manifolds without boundary and let
+ 	\[ f \colon M \to N \]
+ 	be a smooth map. If $M$ is compact and $N$ is connected, then the degree of $f$ is defined as follows:
+ 	
+ 	Let $x \in M$ be a regular point of $f$, so that $\df_x \colon TM_x \to TN_{f(x)}$ is a linear isomorphism between oriented vector spaces. Define the \textit{sign}\index{sign} of $\df_x$ to be $+1$ or $-1$ according as $\df_x$ preserves or reverses orientation. For any regular value $y \in N$ define
+ 	\[ \deg(f;y)\index[symbol]{$\deg(f;y)$} = \sum_{x \in f^{-1}(y)} \sign \df_x. \]
+ 	As in \S\ref{chap:1}, this integer $\deg(f;y)$ is a locally constant function of $y$. It is defined on a dense open subset of $N$.
+ 	
+ 	\begin{theoremn}\label{thm:5A}
+ 		The integer $\deg(f;y)$ does not depend on the choice of regular value $y$.
+ 	\end{theoremn}
+ 
+ 	It will be called the \textit{degree}\index{degree} of $f$ (denoted $\deg f$).
+ 	
+ 	\begin{theoremn}\label{thm:5B}
+ 		If f is smoothly homotopic to $g$, then $\deg f = \deg g$.
+ 	\end{theoremn}
+ 
+ 	The proof will be essentially the same as that in \S\ref{chap:4}. It is only necessary to keep careful control of orientations.
+ 	
+ 	First consider the following situation: Suppose that $M$ is the boundary of a compact oriented manifold $X$ and that $M$ is oriented as the boundary of $X$.
+ 	
+ 	\begin{lemma}\label{lem:5.1}
+ 		If $f \colon M \to N$ extends to a smooth map $F \colon X \to N$, then $\deg(f;y)=0$ for every regular value $y$.
+ 	\end{lemma}
+ 
+ 	\begin{proof}
+ 		First suppose that $y$ is a regular value for $F$, as well as for $f = F|_M$. The compact $1$-manifold $F^{-1}(y)$ is a finite union of arcs and circles, with only the boundary points of the arcs lying on $M = \partial X$. Let $A \subset F^{-1}(y)$ be one of these arcs, with $\partial A = \{a\} \cup \{b\}$. We will show that
+ 		\[ \sign \df_a + \sign \df_b = 0, \]
+ 		and hence (summing over all such arcs) that $\deg(f;y)=0$.
+ 		
+ 		\begin{figure}[H]
+ 			\centering
+ 			\def\svgwidth{0.8\columnwidth}
+ 			\import{}{orient2.pdf_tex}
+ 			\caption{How to orient $F^{-1}(y)$.}
+ 			\label{fig:9}
+ 		\end{figure}
+ 	
+ 		The orientations for $X$ and $N$ determine an orientation for $A$ as follows: Given $x \in A$, let $(v_1,\cdots,v_{n+1})$ be a positively oriented basis for $TX_x$ with $v_1$ tangent to $A$. \textit{Then $v_1$ determines the required orientation for $TA_x$ if and only if $\rd F_x$ carries $(v_2,\cdots,v_{n+1})$ into a positively oriented basis for $TN_y$}.
+ 		
+ 		Let $v_1(x)$ denote the positively oriented unit vector tangent to $A$ at $x$. Clearly $v_1$ is a smooth function, and $v_1(x)$ points outward at one boundary point (say $b$) and inward at the other boundary point $a$.
+ 		
+ 		It follows immediately that
+ 		\[ \sign \df_a = -1, \quad \sign \df_b = +1; \]
+ 		with sum zero. Adding up over all such arcs $A$, we have proved that $\deg(f;y)=0$.
+ 		
+ 		More generally, suppose that $y_0$ is a regular value for $f$, but not for $F$. The function $\deg(f;y)$ is constant within some neighborhood $U$ of $y_0$. Hence, as in \S\ref{chap:4}, we can choose a regular value $y$ for $F$ within $U$ and observe that
+ 		\[ \deg(f;y_0) = \deg(f;y) = 0. \]
+ 		This proves Lemma \ref{lem:5.1}.
+ 	\end{proof}
+ 
+ 	Now consider a smooth homotopy $F \colon [0,1] \x M \to N$ between two mappings $f(x) = F(0,x)$, $g(x)=F(1,x)$.
+ 	
+ 	\begin{lemma}\label{lem:5.2}
+ 		The degree $\deg(g;y)$ is equal to $\deg(f;y)$ for any common regular value $y$.
+ 	\end{lemma}
+ 
+ 	\begin{proof}
+ 		The manifold $[0,1] \x M^n$ can be oriented as a product, and will then have boundary consisting of $1 \x M^n$ (with the correct orientation) and $0 \x M^n$ (with the wrong orientation). Thus the degree of $F|_{\partial([0,1] \x M^n)}$ at a regular value $y$ is equal to the difference
+ 		\[ \deg(g;y) - \deg(f;y). \]
+ 		According to Lemma \ref{lem:5.1} this difference must be zero.
+ 	\end{proof}
+ 
+ 	The remainder of the proof of Themrem \ref{thm:5A} and \ref{thm:5B} is completely analogous to the argument in \S\ref{chap:4}. If $y$ and $z$ are both regular values for $f \colon M \to N$, choose a diffeomorphism $h \colon N \to N$ that carries $y$ to $z$ and is isotopic to the identity. Then $h$ will preserve orientation, and
+ 	\[ \deg(f;y) = \deg(h \circ f; h(y)) \]
+ 	by inspection. But $f$ is homotopic to $h \circ f$; hence
+ 	\[ \deg(h \circ f; z) = \deg(f;z) \]
+ 	by Lemma \ref{lem:5.2}. Therefore $\deg(f;y)=\deg(f;z)$, which completes the proof.
+ 	
+ 	\begin{examples}
+ 		The complex function $z \to z^k$, $z \neq 0$, maps the unit circle onto itself with degree $k$. (Here $k$ may be positive, negative, or zero.) The degenerate mapping
+ 		\[ f \colon M \to \text{constant} \in N \]
+ 		has degree zero. A diffeomorphism $f \colon M \to N$ has degree $+1$ or $-1$ according as $f$ preserves or reverses orientation. \textit{Thus an orientation reversing diffeomorphism of a compact boundaryless manifold is not smoothly homotopic to the identity}.
+ 		
+ 		One example of an orientation reversing diffeomorphism is provided by the reflection $r_i \colon \bbS^n \to \bbS^n$, where
+ 		\[ r_i(x_1,\cdots,x_{n+1}) = (x_1,\cdots,-x_i,\cdots,x_{n+1}). \]
+ 		The antipodal map of $\bbS^n$ has degree $(-1)^{n+1}$, as we can see by noting that the antipodal map is the composition of $n+1$ reflections:
+ 		\[ x = r_1 \circ r_2 \circ \cdots \circ r_{n+1}(x). \]
+ 		\textit{Thus if $n$ is even, the antipodal map of $\bbS^n$ is not smoothly homotopic to the identity}, a fact not detected by the degree modulo $2$.
+ 	\end{examples}
+ 
+ 	As an application, following Brouwer\index{Brouwer, L. E. J.}, we show that \textit{$\bbS^n$ admits a smooth field of nonzero tangent vectors if and only if $n$ is odd}. (Compare Figure \ref{fig:10} and \ref{fig:11}.)
+ 	
+ 	\begin{figure}[t]
+ 		\centering
+ 		\def\svgwidth{0.3\columnwidth}
+ 		\import{}{vecfieldcirc.pdf_tex}
+ 		\caption{A nonzero vector field on the 1-sphere.}
+ 		\label{fig:10}
+ 	\end{figure}
+ 	\begin{figure}[t]
+ 		\centering
+ 		\def\svgwidth{0.75\columnwidth}
+ 		\import{}{vecfieldsph.pdf_tex}
+ 		\caption{Attempt for $n=2$.}
+ 		\label{fig:11}
+ 	\end{figure}
+ 
+ 	\begin{definition}
+ 		A smooth \textit{tangent vector field}\index{tangent vector field}\index{vector field} on $M \subset \R^k$ is a smooth map $v \colon M \to \R^k$ such that $v(x) \in TM_x$ for each $x \in M$. In the case of the sphere $\bbS^n \subset \R^{n+1}$ this is clearly equivalent to the condition
+ 		\begin{equation}\label{eq:5.1}
+ 			v(x) \cdot x = 0 \quad \text{for all} \quad x \in \bbS^n,
+ 		\end{equation}
+ 		using the Euclidean inner product.
+ 	\end{definition}
+ 
+ 	If $v(x)$ is nonzero for all $x$, then we may as well suppose that
+ 	\begin{equation}\label{eq:5.2}
+ 		v(x) \cdot v(x) = 1 \quad \text{for all} \quad x \in \bbS^n.
+ 	\end{equation}
+ 	For in any case $\bar v(x) = \frac{v(x)}{\norm{v(x)}}$ would be a vector field which does satisfy this condition. Thus we can think of $v$ as a smooth function from $\bbS^n$ to itself.
+ 	
+ 	Now define a smooth homotopy
+ 	\[ F \colon \bbS^n \x [0,\pi] \to \bbS^n \]
+ 	by the formula $F(x,\theta) = x \cos\theta + v(x) \sin \theta$. Computation shows that
+ 	\[ F(x,\theta) \cdot F(x,\theta) = 1 \]
+ 	and that
+ 	\[ F(x,0)=x, \quad F(x,\pi)=-x. \]
+ 	Thus the antipodal map of $\bbS^n$ is homotopic to the identity. But for $n$ even we have seen that this is impossible.
+ 	
+ 	On the other hand, if $n=2k-1$, the explicit formula
+ 	\[ v(x_1,\cdots,x_{2k}) = (x_2-x_1,x_4-x_3,\dots,x_{2k}-x_{2k-1}) \]
+ 	defines a nonzero tangent vector field on $\bbS^n$. This completes the proof.
+ 	
+ 	It follows, incidentally, that the antipodal map of $\bbS^n$ \textit{is} homotopic to the identity for $n$ odd. A famous theorem due to Heinz Hopf\index{Hopf, H.} asserts that two mappings from a connected $n$-manifold to the $n$-sphere are smoothly homotopic \textit{if and only if} they have the same degree. In \S\ref{chap:7} we will prove a more general result which implies Hopf's theorem.
+ 	
+ 	\chapter[Vector fields and the Euler number]{Vector fields and \\ the Euler number}\label{chap:6}
+ 	\chaptermark{Vecter fields}
+ 	\sectionmark{Euler number}
+ 	
+ 	As a further application of the concept of degree, we study vector fields on other manifolds.
+ 	
+ 	Consider first an open set $U \subset \R^m$ and a smooth vector field
+ 	\[ v \colon U \to \R^m \]
+ 	with an isolated zero at the point $z \in U$. The function
+ 	\[ \bar v(x) = \frac{v(x)}{\norm{v(x)}} \]
+ 	maps a small sphere centered at $z$ into the unit sphere\footnote{Each sphere is to be oriented as the boundary of the corresponding disk.}. The degree of this mapping is called the \textit{index}\index{index} $\iota$ of $v$ at the zero $z$.
+ 	
+ 	Some examples, with indices $-1,0,1,2$, are illustrated in Figure \ref{fig:12}. (Intimately associated with $v$ are the curves ``tangent'' to $v$ which are obtained by solving the differetial equations $\deriv{x_i}{t} = v_i(x_1,\cdots,x_n)$. It is these curves which are actually sketched in Figure \ref{fig:12}.)
+ 	
+ 	A zero with arbitrary index can be obtained as follows: In the plane of complex numbers the polynomial $z^k$ defines a smooth vector field with zero of index $k$ at the origin, and the function $\bar z^k$ defines a vector field with a zero of index $-k$.
+ 	
+ 	We must prove that this concept of index is invariant under diffeomorphism of $U$. To explain what this means, let us consider the more general situation of a map $f \colon M \to N$, with a vector field on each manifold.
+ 	
+ 	\begin{definition}
+ 		The vector fields $v$ on $M$ and $v'$ on $N$ \textit{correspond}\index{correspond} under $f$ if the derivative $\df_x$ carries $v(x)$ into $v'(f(x))$ for each $x \in M$.
+ 	\end{definition}
+ 	
+ 	\begin{figure}[h]
+ 		\centering
+ 		\def\svgwidth{0.8\columnwidth}
+ 		\import{}{vecfield.pdf_tex}
+ 		\caption{Examples of plane vector fields.}
+ 		\label{fig:12}
+ 	\end{figure}
+ 	
+ 	If $f$ is a diffeomorphism, then clearly $v'$ is uniquely determined by $v$. The notation
+ 	\[ v' = \df \circ v \circ f^{-1} \]
+ 	will be used.
+ 	
+ 	\begin{lemma}\label{lem:6.1}
+ 		Suppose that the vector field $v$ on $U$ corresponds to
+ 		\[ v' = \df \circ v \circ f^{-1} \]
+ 		on $U'$ under a diffeomorphism $f \colon U \to U'$. Then the index of $v$ at an isolated zero $z$ is equal to the index of $v'$ at $f(z)$.
+ 	\end{lemma}
+ 	
+ 	Assuming Lemma \ref{lem:6.1}, we can define the concept of index for a vector field $w$ on an arbitrary manifold $M$ as follows: If $g \colon U \to M$ is a parametrization of a neighborhood of $z$ in $M$, then the \textit{index}\index{index} $\iota$ of $w$ at $z$ is defined to be equal to the index of the corresponding vector field $\rd g^{-1} \circ w \circ g$ on $U$ at the zero $g^{-1}(z)$. It clearly will follow from Lemma \ref{lem:6.1} that $\iota$ is well defined.
+ 	
+ 	The proof of Lemma \ref{lem:6.1} will be bases on the proof of a quite different result:
+ 	
+ 	\begin{lemma}\label{lem:6.2}
+ 		Any orientation preserving diffeomorphism $f$ of $\R^m$ is smoo-thly isotopic to the identity.
+ 	\end{lemma}
+ 
+ 	(In contrast, for many values of $m$ there exists an orientation preserving diffeomorphism of the sphere $\bbS^m$ which is not smoothly isotopic to the identity. See \cite[p. 404]{bib20}.)
+ 	
+ 	\begin{proof}
+ 		We may assume that $f(0)=0$. Since the derivative at $0$ can be defined by
+ 		\[ \df_0(x) = \lim_{t \to 0} \frac{f(tx)}t, \]
+ 		it is natural to define an isotopy
+ 		\[ F \colon \R^m \x [0,1] \to \R^m \]
+ 		by the formula
+ 		\begin{align*}
+ 			F(x,t) &= \frac{f(tx)}t \quad \text{for} \quad 0 < t \leq 1, \\
+ 			F(x,0) &= \df_0(x).
+ 		\end{align*}
+ 		To prove that $F$ is smooth, even as $t \to 0$, we write $f$ in the form\footnote{See for example \cite[p. 5]{bib22}.}
+ 		\[ f(x) = x_1 g_1(x) + \cdots + x_m g_m(x), \]
+ 		where $g_1,\cdots,g_m$ are suitable smooth functions, and note that
+ 		\[ F(x,t) = x_1 g_1(tx) + \cdots + x_m g_m(tx) \]
+ 		for all values of $t$.
+ 		
+ 		Thus $f$ is isotopic to the linear mapping $\df_0$, which is clearly isotopic to the identity. This proves Lemma \ref{lem:6.2}.
+ 	\end{proof}
+ 
+ 	\begin{proof}[Proof of Lemma \ref{lem:6.1}.]
+ 		We may assume that $z=f(z)=0$ and that $U$ is convex. If $f$ preserves orientation, then, proceeding exactly as above, we construct a one-parameter family of embeddings
+ 		\[ f_t \colon U \to \R^m \]
+ 		with $f_0 = \text{identity}$, $f_1 = f$, and $f_t(0)=0$ for all $t$. Let $v$, denote the vector field $\df_t \circ v \circ f_t^{-1}$ on $f_t(U)$, which corresponds to $v$ on $U$. These vector fields are all defined and nonzero on a sufficiently small sphere centered at $0$. Hence the index of $v=v_0$ at $0$ must be equal to the index of $v'=v_1$ at $0$. This proves Lemma \ref{lem:6.1} for orientation preserving diffeomorphisms.
+ 		
+ 		To consider diffeomorphisms which reverse orientation it is sufficient to consider the special case of a reflection $\rho$. Then
+ 		\[ v' = \rho \circ v \circ \rho^{-1}, \]
+ 		so the associated function $\bar v'(x) = \frac{v'(x)}{\norm{v'(x)}}$ on the $\eps$-sphere satisfies
+ 		\[ \bar v' = \rho \circ \bar v \circ \rho^{-1}. \]
+ 		Evidently the degree of $\bar v'$ equals the degree of $\bar v$, which completes the proof of Lemma \ref{lem:6.1}. 
+ 	\end{proof}
+ 
+ 	We will study the following classical result: Let $M$ be a compact manifold and $w$ a smooth vector field on $M$ with isolated zeros. \textit{If $M$ has a boundary, then $w$ is required to point outward at all boundary points}.
+ 	
+ 	\begin{poincarehopf}\index{Poincar\'e, H.}\index{Hopf, H.}\index{Poincar\'e-Hopf theorem}
+ 		The sum $\sum \iota$ of the indices at the zeros of such a vector field is equal to the Euler number\index{Euler number}\footnote{Here $H_i(M)$ denotes the $i$-th homology group of $M$. This will be our first and last reference to homology theory.}
+ 		\[ \chi(M) = \sum_{i=0}^m (-1)^i \rank H_i(M). \]
+ 		In particular this index sum is a topological invariant of $M$: it does not depend on the particular choice of vector field.
+ 	\end{poincarehopf}
+ 
+ 	(A 2-dimensional version of this theorem was proved by Poincar\'e\index{Poincar\'e, H.} in 1885. The full theorem was proved by Hopf\index{Hopf, H.} \cite{bib14} in 1926 after earlier partial results by Brouwer and Hadamard.)
+ 	
+ 	We will prove part of this theorem, and sketch a proof of the rest. First consider the special case of a compact domain in $\R^m$.
+ 	
+ 	Let $X \subset \R^m$ be a compact $m$-manifold with boundary. The \textit{Gauss mapping}\index{Gauss mapping}
+ 	\[ g \colon \partial X \to \bbS^{m-1} \]
+ 	assigns to each $x \in \partial X$ the outward unit normal vector at $x$.
+ 	
+ 	\begin{lemma}[Hopf]\label{lem:6.3}
+ 		If $v \colon X \to \R^m$ is a smooth vector field with isolated zeros, and if $v$ points out of $X$ along the boundary, then the index sum $\sum \iota$ is equal to the degree of the Gauss mapping from $\partial X$ to $\bbS^{m-1}$. In particular, $\sum \iota$ does not depend on the choice of $v$.
+ 	\end{lemma}
+ 
+ 	For example, if a vector field on the disk $\bbD^m$ points outward along the boundary, the $\sum \iota = +1$. (Compare Figure \ref{fig:13}.)
+ 	
+ 	\begin{figure}[t]
+ 		\centering
+ 		\def\svgwidth{0.35\columnwidth}
+ 		\import{}{indexsum1.pdf_tex}
+ 		\caption{An example with index sum $+1$.}
+ 		\label{fig:13}
+ 	\end{figure}
+ 
+ 	\begin{proof}
+ 		Removing an $\eps$-ball aroung each zero, we obtain a new manifold with boundary. The function $\bar v(x) = \frac{v(x)}{\norm{v(x)}}$ maps this manifold into $\bbS^{m-1}$. Hence the sum of the degrees of $\bar v$ restricted to the various boundary components is zero. But $\bar v|_{\partial X}$ is homotopic to $g$, and the degrees on the other boundary components add up to $-\sum \iota$. (The minus sign occurs since each small sphere gets the wrong orientation.) Therefore
+ 		\[ \deg (g) - \sum \iota = 0 \]
+ 		as required.
+ 	\end{proof}
+ 
+ 	\begin{remark}
+ 		The degree of $g$ is also known as the ``curvatura integra''\index{curvatura integra} of $\partial X$, since it can be expressed as a constant times the integral over $\partial X$ of the Gaussian curvature. This integer is of course equal to the Euler number of $X$. For $m$ odd it is equal to half the Euler number of $\partial X$.
+ 	\end{remark}
+ 
+ 	Before extending this result to other manifolds, some more preliminaries are needed.
+ 	
+ 	It is natural to try to compute the index of a vector field $v$ at a zero $z$ in terms of the derivatives of $v$ at $z$. Consider first a vector field $v$ on an open set $U \subset \R^m$ and think of $v$ as a mapping $U \to \R^m$, so that $\rd v_x \colon \R^m \to \R^m$ is defined.
+ 	
+ 	\begin{definition}
+ 		The vector field $v$ is \textit{nondegenerate}\index{nondegenerate} at $z$ if the linear transformation $\rd v_x$ is nonsingular.
+ 		
+ 		It follows that $z$ is and isolated zero.
+ 	\end{definition}
+ 
+ 	\begin{lemma}\label{lem:6.4}
+ 		The index of $v$ at nondegenerate zero $z$ is either $+1$ or $-1$ according as the determinant of $\rd v_x$ is positive or negative.
+ 	\end{lemma}
+ 
+ 	\begin{proof}
+ 		Think of $v$ as a diffeomorphism from some convex neighborhood $U_0$ of $z$ into $\R^m$. We may assume that $z=0$. If $v$ preserves orientation, we have seen that $v|_{U_0}$ can be deformed smoothly into the identity without introducing any new zeros. (See Lemmas \ref{lem:6.1}, \ref{lem:6.2}.) Hence the index is certainly equal to $+1$.
+ 		
+ 		If $v$ reverses orientation, the similarly $v$ can be deformed into a reflection; hence $\iota=-1$.
+ 	\end{proof}
+ 
+ 	More generally consider a zero $z$ of a vector field $w$ on a manifold $M \subset \R^k$. Think of $w$ as a map from $M$ to $\R^k$ so that the derivative $\rd w_z \colon TM_z \to \R^k$ is defined.
+ 	
+ 	\begin{lemma}\label{lem:6.5}
+ 		The derivative $\rd w_z$ actually carries $TM_z$ into the subspace $TM_z \subset \R^k$, and hence can be consider as a linear transformation from $TM_z$ to itself. If this linear transformation has determinant $D \neq 0$ then $z$ is an isolated zero of $w$ with index equal to $+1$ or $-1$ according as $D$ is positive or negative.
+ 	\end{lemma}
+ 
+ 	\begin{proof}
+ 		Let $h \colon U \to M$ be a parametrization of some neighborhood of $z$. Let $e^i$ denote the $i$-th basis vector of $\R^m$ and let
+ 		\[ t^i = \rd h_u(e^i) = \pderiv{h}{u_i} \]
+ 		so that the vectors $t^1,\cdots,t^m$ form a basis for that tangent space $TM_{h(u)}$. We must compute the image of $t^i = t^i(u)$ under the linear transformation $\rd w_{h(u)}$. First note that
+ 		\begin{equation}\label{eq:6.1}
+ 			\rd w_{h(u)}(t^i) = \rd (w \circ h)_u (e^i) = \pderiv{h(u)}{u_i}.
+ 		\end{equation}
+ 		Let $v = \sum v_j e^j$ be the vector field on $U$ which corresponds to the vector field $w$ on $M$. By definition $v \rd h^{-1} \circ w \circ h$, so that
+ 		\[ w(h(u)) = \rd h_u(v) = \sum v_j t^j. \]
+ 		Therefore
+ 		\begin{equation}\label{eq:6.2}
+ 			\pderiv{w(h(u))}{u_i} = \sum_j \br{\pderiv{v_j}{u^i}}t^j + \sum_j v_j\br{\pderiv{t^j}{u_i}}.
+ 		\end{equation}
+ 		Combining \eqref{eq:6.1} and \eqref{eq:6.2}, and then evaluating at the zero $h^{-1}(z)$ of $v$, we obtain the formula
+ 		\begin{equation}\label{eq:6.3}
+ 			\rd w_z(t^i) = \sum_j \br{\pderiv{v_j}{u_i}}t^j.
+ 		\end{equation}
+ 		Thus $\rd w_z$ maps $TM_z$ into itself, and the determinant $D$ of this linear transformation $TM_z \to TM_z$ is equal to the determinant of the matrix $\br{\pderiv{v_j}{u_i}}$. Together with Lemma \ref{lem:6.4} this completes the proof.
+ 	\end{proof}
+ 
+ 	Now consider a compact boundaryless manifold $M \subset \R^k$. Let $N_\eps$ denote the closed $\eps$-neighborhood of $M$ (i.e. the set of all $x \in \R^k$ with $\norm{x-y} \leq \eps$ for some $y \in M$). For $\eps$ sufficiently small one can show that $N_\eps$ is a smooth manifold with boundary. (See \S\ref{chap:8}, Problem \ref{prob:11}.)
+ 	
+ 	\begin{theoremarab}\label{thm:6.1}
+ 		For any vector field $v$ on $M$ with only nondegenerate zeros, the index sum $\sum\iota$ is equal to the degree of the Gauss mapping\footnote{A different interpretation of this degree has been given by Allendoerfer and Fenchel: the degree of $g$ can be expressed as the integral over $M$ of a suitable curvature scalar, thus yielding an $m$-dimensional version of the classical Gauss-Bonnet theorem. (References \cite{bib1}, \cite{bib9}. See also Chern \cite{bib6}.)}
+ 		\[ g \colon \partial N_\eps \to \bbS^{k-1}. \]
+ 		In particular this sum does note depend of the choice of vector field.
+ 	\end{theoremarab}
+ 
+ 	\begin{proof}
+ 		For $x \in N_\eps$ let $r(x) \in M$ denote the closest point of $M$. (Compare \S\ref{chap:8}, Problem \ref{prob:12}.) Note that the vector $x-r(x)$ is perpendicular to the tangent space of $M$ at $r(x)$, for otherwise $r(x)$ would not be the closest point of $M$. If $\eps$ is sufficiently small, then the function $r(x)$ is smooth and well-defined.
+ 		
+ 		\begin{figure}[H]
+ 			\centering
+ 			\def\svgwidth{0.5\columnwidth}
+ 			\import{}{epsnbhd.pdf_tex}
+ 			\caption{The $\eps$-neighborhood of $M$.}
+ 			\label{fig:14}
+ 		\end{figure}
+ 		
+ 		We will also consider the squared distance function
+ 		\[ \fai(x) = \norm{x-r(x)}^2. \]
+ 		An easy computation shows that the gradient of $\fai$ is given by
+ 		\[ \grad \fai = 2(x-r(x)). \]
+ 		Hence, for each point $x$ of the level surface $\partial N_\eps = \fai^{-1}(\eps^2)$, the outward unit normal vector is given by
+ 		\[ g(x) = \frac{\grad \fai}{\norm{\grad \fai}} = \frac{x-r(x)}{\eps}. \]
+ 		Extend $v$ to a vector field $w$ on the neighborhood $N_\eps$ by setting
+ 		\[ w(x) = (x-r(x))+v(r(x)). \]
+ 		Then $w$ points outward along the boundary, since the inner product $w(x) \cdot g(x)$ is equal to $\eps>0$. Note that $w$ can vanish only at the zeros of $v$ in $M$; this is clear since the two summands $(x-r(x))$ and $v(r(x))$ are mutually orthogonal. Computing the derivative of $w$ at a zero $z \in M$, we see that
+ 		\begin{equation*}
+ 			\begin{array}{rll}
+ 			&\rd w_z (h) = \rd v_z (h) &\text{for all} \quad h \in TM_z \\
+ 			&\rd w_z (h) = h &\text{for} \quad h \in TM^\perp_z.
+ 			\end{array}
+ 		\end{equation*}
+ 		Thus the determinant of $\rd w_z$ is equal to the determinant of $\rd w_z$. Hence the index of $w$ at the zero $z$ is equal to the index $\iota$ of $v$ at $z$.
+ 		
+ 		Now according to Lemma \ref{lem:6.3} the index sum $\sum \iota$ is equal to the degree of $g$. This proves Theorem \ref{thm:6.1}. 
+ 	\end{proof}
+ 
+ 	\begin{examples}
+ 		On the sphere $\bbS^m$ there exists a vector field $v$ which points ``north'' at every point\footnote{For example, $v$ can be defined by the formula $v(x)=p-(p\cdot x)x$, where $p$ is the north pole. (See Figure \ref{fig:11}.)}. At the south pole the vectors radiate outward; hence the index is $+1$. At the north pole the vectors converge inward; hence the index is $(-1)^m$. Thus the invariant $\sum \iota$ is equal to $0$ or $2$ according as $m$ is odd or even. This gives a new proof that every vector field on an even sphere has a zero.
+ 		
+ 		For any odd-dimensional, boundaryless manifold the invariant $\sum \iota$ is zero. For if the vector field $v$ is replaced by $-v$, then each index is multiplied by $(-1)^m$, and the equality
+ 		\[ \sum \iota = (-1)^m \sum \iota, \]
+ 		for $m$ odd, implies that $\sum \iota = 0$.
+ 	\end{examples}
+ 
+ 	\begin{remark}
+ 		If $\sum\iota = 0$ on a connected manifold $m$, then a theorem of Hopf asserts that there exists a vector field on $M$ with no zeros at all.
+ 	\end{remark}
+ 
+ 	In order to obtain the full strength of the Poincar\'e-Hopf theorem, three further steps are needed.
+ 	
+ 	\textbf{Step 1}. \textit{Identification of the invariant $\sum\iota$ with the Euler number $\chi(M)$}. It is sufficient to construct just one example of a nondegenerate vector field on $M$ with $\sum \iota$ equal to $\chi(M)$. The most pleasant way of doing this is the following: According to Marston Morse\index{Morse, M.}, it is always possible to find a real valued function on $M$ whose ``gradient'' is a nondegenerate vector field. Furthermore, Morse showed that the sum of indices associated with such a gradient field is equal to the Euler number of $M$. For details of this argument the reader is referred to Milnor \cite[pp. 29-36]{bib22}.
+ 	
+ 	\textbf{Step 2}. \textit{Proving the theorem for a vector field with degenerate zeros}. Consider first a vector field $v$ on an open set $U$ with an isolated zero at $z$. If
+ 	\[ \la \colon U \to [0,1] \]
+ 	takes the value $1$ on a small neighborhood $N_1$ of $z$ and the value $0$ outside a slightly larger neighborhood $N$, and if $y$ is sufficiently small regular value of $v$, then the vector field
+ 	\[ v'(x) = v(x) - \la(x)y \]
+ 	in nondegenerate\footnote{Clearly $v'$ is nondegenerate within $N_1$. But if $y$ is sufficiently small, then $v'$ will have no zeros at all within $N-N_1$.} within $N$. The sum of the indices at the zeros within $N$ can be evaluated as the degree of the map
+ 	\[ \bar v \colon \partial N \to \bbS^{m-1}, \]
+ 	and hence does not change during this alteration.
+ 	
+ 	More generally consider vector fields on a compact manifold $M$. Applying this argument locally we see that \textit{any vector field with isolated zeros can be replaced by a nondegenerate vector field without altering the integer $\sum \iota$}.
+ 	
+ 	\textbf{Step 3}. \textit{Manifolds with boundary}. If $M \subset \R^k$ has a boundary, then any vector field $v$ which points outward along $\partial M$ can again be extended over the neighborhood $N_\eps$ so as to point outward along $\partial N_\eps$. However, there is some difficulty with smoothness around the boundary of $M$. Thus $N_\eps$ is not a smooth (i.e. differentiable of class $C^\infty$) manifold, but only a $C^1$-manifold. The extension $w$, if defined as before by $w(x)=v(r(x))+x-r(x)$, will only be a continuous vector field near $\partial M$. The argument can nonetheless be carried out either by showing that our strong differentiability assumptions are not really necessary or by other methods.
+ 	
+ 	\chapter[Framed cobordism; the Pontryagin construction]{Framed cobordism \\ The Pontryagin construction}\label{chap:7}
+ 	\chaptermark{Framed cobordism}
+ 	\sectionmark{The Pontryagin construction}
+ 	
+ 	The degree of a mapping $M \to M'$ is defined only when the manifolds $M$ and $M'$ are oriented and have the same dimension. We will study a generalization, due to Pontryagin\index{Pontryagin, L.}, which is defined for a smooth map
+ 	\[ f \colon M \to \bbS^p \]
+ 	from an arbitrary compact, boundaryless manifold to a sphere. First some definitions.
+ 	
+ 	Let $N$ and $N'$ be compact $n$-dimensional submanifolds of $M$ with $\partial N = \partial N' = \partial M = \emptyset$. The difference of dimensions $m-n$ is called the \textit{codimension}\index{codimension} of the submanifolds. 
+ 	
+ 	\begin{definition}
+ 		$N$ is \textit{cobordant\index{cobordant}\index{cobordism} to $N'$ within $M$} if the subset
+ 		\[ N \x [0,\eps) \cup N' \x (1-\eps,1] \]
+ 		of $M \x [0,1]$ can be extended to a compact manifold
+ 		\[ X \subset M \x [0,1] \]
+ 		so that
+ 		\[ \partial X = N \x 0 \cup N' \x 1, \]
+ 		and so that $X$ does not intersect $M \x 0 \cup M \x 1$ except at the points of $\partial X$.
+ 	\end{definition}
+ 
+ 	Clearly cobordism is an equivalence relation. (See Figure \ref{fig:15}.)
+ 	
+ 	\begin{figure}[t]
+ 		\centering
+ 		\def\svgwidth{0.8\columnwidth}
+ 		\import{}{pasting.pdf_tex}
+ 		\caption{Pasting together two cobordisms within $M$.}
+ 		\label{fig:15}
+ 	\end{figure}
+ 	
+ 	\def\fru{\mathfrak{u}}
+ 	\def\frv{\mathfrak{v}}
+ 	\def\frw{\mathfrak{w}}
+ 	\begin{definition}
+ 		A \textit{framing}\index{framing} of a submanifold $N \subset M$ is a smooth function $\frv$ which assigns to each $x \in N$ a basis
+ 		\[ \frv(x) = (v^1(x),\cdots,v^{m-n}(x)) \]
+ 		for the space $TN^\perp_x \subset TM_x$ of normal vectors to $N$ in $M$ at $x$. (See Figure \ref{fig:16}.) The pair $(N,\frv)$ is called a \textit{framed submanifold}\index{framed submanifold} of $M$. Two framed submanifolds $(N,\frv)$ and $(N',\frw)$ are \textit{framed cobordant}\index{framed cobordant} if there exists a cobordism $X \subset M \x [0,1]$ between $N$ and $N'$ and a framing $\fru$ of $X$, so that
+ 		\begin{align*}
+ 			u^i(x,t) &= (v^i(x),0) \quad \text{for} \quad (x,t) \in N \x [0,\eps), \\
+ 			u^i(x,t) &= (w^i(x),0) \quad \text{for} \quad (x,t) \in N' \x (1-\eps,1].
+ 		\end{align*}
+ 		Again this is an equivalence relation.
+ 	\end{definition}
+ 
+ 	\begin{figure}[t]
+ 		\centering
+ 		\def\svgwidth{0.8\columnwidth}
+ 		\import{}{framemnfd.pdf_tex}
+ 		\caption{Framed submanifolds and a framed cobordism.}
+ 		\label{fig:16}
+ 	\end{figure}
+ 	
+ 	Now consider a smooth map $f \colon M \to \bbS^p$ and a regular value $y \in \bbS^p$. The map $f$ induces a framing of the manifold $f^{-1}(y)$ as follows: Choose a positively oriented basis $\frv = (v_1,\cdots,v_p)$ for the tangent space $T(\bbS^p)_y$. For each $x \in f^{-1}(y)$ recall from page \pageref{lem:2} that
+ 	\[ \df_x \colon TM_x \to T(\bbS^p)_y \]
+ 	maps the subspace $Tf^{-1}(y)_x$ to zero and maps its orthogonal complement $Tf^{-1}(y)^\perp_x$ isomorphically onto $T(\bbS^p)_y$. Hence there is a unique vector
+ 	\[ w^i(x) \in Tf^{-1}(y)^\perp_x \subset TM_x \]
+ 	that maps into $v^i$ under $\df_x$. It will be convenient to use the notation $\frw = f^*\frv$\index[symbol]{$f^*\frv$} for the resulting framing $w^1(x),\cdots,w^p(x)$ of $f^{-1}(y)$.
+ 	
+ 	\begin{definition}
+ 		This framed manifold $(f^{-1}(y),f^*\frv)$ will be called the \textit{Pontryagin manifold}\index{Pontryagin manifold} associated with $f$.
+ 	\end{definition}
+ 
+ 	Of course $f$ has many Pontryagin manifolds, corresponding to different choices of $y$ and $\frv$, but they all belong to a single framed cobordism class:
+ 	
+ 	\begin{theoremn}\label{thm:7A}
+ 		If $y'$ is another regular value of $f$ and $\frv'$ is a positively oriented basis for $T(\bbS^p)_{y'}$, then the framed manifold $(f^{-1}(y'),f^*\frv')$ is framed cobordant to $(f^{-1}(y),f^*\frv)$.
+ 	\end{theoremn}
+ 
+ 	\begin{theoremn}\label{thm:7B}
+ 		Two mappings from $M$ to $\bbS^p$ are smoothly homotopic if and only if the associated Pontryagin manifolds are framed cobordant.
+ 	\end{theoremn}
+ 
+ 	\begin{theoremn}\label{thm:7C}
+ 		Any compact framed submanifold $(N,\frw)$ of codimension $p$ in $M$ occurs as Pontryagin manifold for some smooth mapping $f \colon M \to \bbS^p$.
+ 	\end{theoremn}
+ 
+ 	Thus the homopoty classes of maps are in one-one correspondence with the framed cobordism classes of submanifolds.
+ 	
+ 	The proof of Theorem \ref{thm:7A} will be very similar to the argument in \S\S\ref{chap:4} and \ref{chap:5}. It will be based on three lemmas.
+ 	
+ 	\begin{lemma}\label{lem:7.1}
+ 		If $\frv$ and $\frv'$ are two different positively oriented bases at $y$, then the Pontryagin manifold $(f^{-1}(y),f^*\frv)$ is framed cobordant to $(f^{-1}(y),f^*\frv')$.
+ 	\end{lemma}
+ 
+ 	\begin{proof}
+ 		Choose a smooth path from $\frv$ to $\frv'$ in the space of all positively oriented bases for $T(\bbS^p)_y$. This is possible since this space of bases can be identified with the space $\GL^+(p,\R)$ of matrices with positive determinant, and hence is connected. Such a path gives rise to the required framing of the cobordism $f^{-1}(y) \x [0,1]$.
+ 	\end{proof}
+ 
+ 	By abuse of notation we will often delete reference to $f^*\frv$ and speak simply of ``the framed manifold $f^{-1}(y)$''.
+ 	
+ 	\begin{lemma}\label{lem:7.2}
+ 		If $y$ is a regular value of $f$, and $z$ is sufficiently close to $y$, then $f^{-1}(z)$ is framed cobordant to $f^{-1}(y)$.
+ 	\end{lemma}
+ 
+ 	\begin{proof}
+ 		Since the set $f(C)$ of critical values is compact, we can choose $\eps>0$ so that the $\eps$-neighborhood of $y$ contains only regular values. Given $z$ with $\|z-y\| < \eps$, choose a smooth one-parameter family of rotations (i.e. an isotopy) $r_t \colon \bbS^p \to \bbS^p$ so that $r_1(y) = z$, and so that
+ 		\begin{enumerate}
+ 			\item $r_t$ is the identity for $0 \leq t \leq \eps'$,
+ 			\item $r_t$ equals $r^1$ for $1-\eps'<t \leq 1$, and
+ 			\item each $r_t^{-1}(z)$ lies on the great circle from $y$ to $z$, and hence is a regular value of $f$.
+ 		\end{enumerate}
+ 		
+ 		Define the homotopy
+ 		\[ F \colon M \x [0,1] \to \bbS^p \]
+ 		by $F(x,t)=r_t f(x)$. For each $t$ note that $z$ is a regular value of the composition
+ 		\[ r_t \circ f \colon M \to \bbS^p. \]
+ 		It follows a fortiori that $z$ is a regular value for the mapping $F$. Hence
+ 		\[ F^{-1}(z) \subset M \x [0,1] \]
+ 		is a framed manifold and provides a framed cobordism between the framed manifolds $f^{-1}(z)$ and $(r_t \circ f)^{-1}(z) = f^{-1} \circ r^{-1}_t (z) = f^{-1}(y)$. This proves Lemma \ref{lem:7.2}.
+ 	\end{proof}
+ 
+ 	\begin{lemma}\label{lem:7.3}
+ 		If $f$ and $g$ are smoothly homotopic and $y$ is a regular value for both, then $f^{-1}(y)$ is framed cobordant to $g^{-1}(y)$.
+ 	\end{lemma}
+ 
+ 	\begin{proof}
+ 		Choose a homotopy $F$ with
+ 		\[ F(x,t) = \left\{\begin{array}{ll}
+ 			\! f(x), &\quad 0 \leq t \leq \eps, \\
+ 			g(x), &\quad 1-\eps < t \leq 1.
+ 		\end{array}\right. \]
+ 		Choose a regular value $z$ for $F$ which is close enough to $y$ so that $f^{-1}(z)$ is framed cobordant to $f^{-1}(y)$ and so that $g^{-1}(z)$ is framed cobordant to $g^{-1}(y)$. Then $F^{-1}(z)$ is a framed manifold and provides a framed cobordism between $f^{-1}(z)$ and $g^{-1}(z)$. This proves Lemma \ref{lem:7.3}.
+ 	\end{proof}
+ 
+ 	\begin{proof}[Proof of Theorem \ref{thm:7A}.]
+ 		Given any two regular values $y$ and $z$ for $f$, we can choose rotations
+ 		\[ r_t \colon \bbS^p \to \bbS^p \]
+ 		so that $r_0$ is the identity and $r_1(y) = z$. Thus $f$ is homotopic to $r_1 \circ f$; hence $f^{-1}(z)$ is framed cobordant to
+ 		\[ (r_1 \circ f)^{-1}(z) = f^{-1} \circ r^{-1}_1(z) = f^{-1}(y). \]
+ 		This completes the proof of Theorem \ref{thm:7A}.
+ 	\end{proof}
+ 
+ 	The proof of Theorem \ref{thm:7C} will be based on the following: Let $N \subset M$ be a framed submanifold of codimension $p$ with framing $\frv$. Assume that $N$ is compact and that $\partial N = \partial M = \emptyset$.
+ 	
+ 	\begin{prodnbhd}\index{product neighborhood theorem}
+ 		Some neighborhood of $N$ in $M$ is diffeomorphic to the product $N \x \R^p$. Furthermore the diffeomorphism can be chosen so that each $x \in N$ corresponds to $(x,0) \in N \x \R^p$ and so that each normal frame $\frv(x)$ corresponds to the standard basis for $\R^p$.
+ 	\end{prodnbhd}
+ 
+ 	\begin{remark}
+ 		Product neighborhoods do not exists for arbitrary submanifolds. (Compare Figure \ref{fig:17}.)
+ 	\end{remark}
+ 	
+ 	\begin{figure}[H]
+ 		\centering
+ 		\def\svgwidth{0.6\columnwidth}
+ 		\import{}{mobius.pdf_tex}
+ 		\caption{An unframable submanifold.}
+ 		\label{fig:17}
+ 	\end{figure}
+ 
+ 	\begin{proof}
+ 		First suppose that $M$ is the Euclidean space $\R^{n+p}$. Consider the mapping $g \colon N \x \R^p \to M$, defined by
+ 		\[ g(x; t_1, \cdots, t_p) = x + t_1 v^1(x) + \cdots + t_p v^p(x). \]
+ 		Clearly $\rd g_{(x;0,\cdots,0)}$ is nonsingular; hence $g$ maps some neighborhood of $(x,0) \in N \x \R^p$ diffeomorphically onto an open set.
+ 		
+ 		We will prove that $g$ is one-one on the entire neighborhood $N \x U_\eps$ of $N \x 0$, providing that $\eps>0$ is sufficiently small; where $U_\eps$ denotes the $\eps$-neighborhood of $0$ in $\R^p$. For otherwise there would exist pairs $(x,u) \neq (x',u')$ in $N \x \R^p$ with $\|u\|$ and $\|u'\|$ arbitrary small and with
+ 		\[ g(x,u) = g(x',u'). \]
+ 		Since $N$ is compact, we could choose a sequence of such pairs with $x$ converging, say to $x_0$, with $x'$ converging to $x'_0$, and with $u \to 0$ and $u' \to 0$. Then clearly $x_0=x_0'$, and we have contradicted the statement that $g$ is one-one in a neighborhood of $(x_0,0)$.
+ 		
+ 		Thus $g$ maps $N \x U_\eps$ diffeomorphically onto an open set. But $U_\eps$ is diffeomorphic to the full Euclidean space $\R^p$ under the correspondence
+ 		\[ u \mapsto \frac{u}{1-\frac{\norm{u}^2}{\eps}}. \]
+ 		Since $g(x,0) = x$, and since $\rd g_{(x,0)}$ does what is expected of it, this proves the Product Neighborhood Theorem for the special case $M = \R^{n+p}$.
+ 		
+ 		For the general case it is necessary to replace straightlines in $\R^{n+p}$ by geodesics\index{geodesic} in $M$. More precisely let $g(x; t_1, \cdots, t_p)$ be the endpoint of the geodesic segment of length $\| t_1v^1(x) + \cdots + t_pv^p(x) \|$ in $M$ which starts at $x$ with the initial velocity vector
+ 		\[ \frac{t_1v^1(x) + \cdots + t_pv^p(x)}{\| t_1v^1(x) + \cdots + t_pv^p(x) \|}. \]
+ 		The reader who is familiar with geodesics will have no difficulty in checking that
+ 		\[ g \colon N \x U_\eps \to M \]
+ 		is well-defined and smooth, for $\eps$ sufficiently small. The remainder of the proof proceeds exactly as before.
+ 	\end{proof}
+ 
+ 	\begin{proof}[Proof of Theorem \ref{thm:7C}.]
+ 		Let $N \subset M$ be a compact, boundaryless, framed submanifold. Choose a product representation
+ 		\[ g \colon N \x \R^p \to V \subset M \]
+ 		for a neighborhood $V$ of $N$, as above, and define the projection
+ 		\[ \pi \colon V \to \R^p \]
+ 		by $\pi(g(x,y)) = y$. (See Figure \ref{fig:18}.) Clearly $0$ is a regular value, and $\pi^{-1}(0)$ is precisely $N$ with its given framing.
+ 		
+ 		\begin{figure}[H]
+ 			\centering
+ 			\def\svgwidth{0.6\columnwidth}
+ 			\import{}{pontryagin.pdf_tex}
+ 			\caption{Constructing a map with given Pontryagin manifold.}
+ 			\label{fig:18}
+ 		\end{figure}
+ 	
+ 		Now choose a smooth map $\fai \colon \R^p \to \bbS^p$ which maps every $x$ with $\|x\| \geq 1$ into a base point $s_0$, and maps the open unit ball in $\R^p$ diffeomorphically\footnote{For example, $\fai(x)=h^{-1}(x/\la(\|x\|^2))$, where $h$ is the stereographic projection from $s_0$ and where $\la$ is a smooth monotone decreasing function with $\la(t)>0$ for $t<1$ and $\la(t)=0$ for $t \geq 1$.} onto $\bbS^p - s_0$. Define
+ 		\[ f \colon M \to \bbS^p \]
+ 		by
+ 		\[ f(x) = \left\{\begin{array}{ll}
+ 			\fai(\pi(x)), &\quad x \in V, \\
+ 			s_0, &\quad x \notin V.
+ 		\end{array}\right. \]
+ 	Clearly $f$ is smooth, and the point $\fai(0)$ is a regular value of $f$. Since the corresponding Pontryagin manifold
+ 	\[ f^{-1}(\fai(0)) = \pi^{-1}(0) \]
+ 	is precisely equal to the framed manifold $N$, this completes the proof of Theorem \ref{thm:7C}.
+ 	\end{proof}
+ 
+ 	In order to prove Theorem \ref{thm:7B} we must first show that the Pontryagin manifold of a map determines its homopoty class. Let $f,g \colon M \to \bbS^p$ be smooth maps with a common regular value $y$.
+ 	
+ 	\begin{lemma}\label{lem:7.4}
+ 		If the framed manifold $(f^{-1}(y),f^*\frv)$ is equal to $(g^{-1}(y),\\ g^*\frv)$, then $f$ is smoothly homotopic to $g$.
+ 	\end{lemma}
+ 
+ 	\begin{proof}
+ 		It will be convenient to set $N = f^{-1}(y)$. The hypothesis that $f^*\frv = g^*\frv$ means that $\df_x = \rd g_x$ for all $x \in N$.
+ 		
+ 		First suppose that $f$ actually conicides with $g$ throughout an entire neighborhood $V$ of $N$. Let $h \colon \bbS^p - y \to \R^p$ be stereographic projection. Then the homotopy
+ 		\[ H(x,t) = \left\{\begin{array}{ll}
+ 			f(x), &\quad x \in V, \\
+ 			h^{-1}[t \cdot h(f(x)) + (1-t) \cdot h(g(x))], &\quad x \in M-N
+ 		\end{array}\right. \]
+ 		proves that $f$ is smoothly homotopic to $g$.
+ 		
+ 		\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+ 		Thus is suffices\footnote[9]{Retypeset: This is the original text. Maybe ``it suffices...''} to deform $f$ so that it coincides with $g$ in some small neighborhood of $N$, being careful not to map any new points into $y$ during the deformation. Choose a product representation
+ 		\[ N \x \R^p \to V \subset M \]
+ 		for a neighborhood $V$ of $N$, where $V$ is small enough so that $f(V)$ and $g(V)$ do not contain the antipode $\bar y$ of $y$. Identifying $V$ with $N \x \R^p$ and identifying $\bbS^p - \bar y$ with $\R^p$, we obtain corresponding mappings
+ 		\[ F,G \colon N \x \R^p \to \R^p, \]
+ 		with
+ 		\[ F^{-1}(0) = G^{-1}(0) = N \x 0, \]
+ 		and with
+ 		\[ \rd F_{(x,0)} = \rd G_{(x,0)} = (\text{projection to $\R^p$}) \]
+ 		for all $x \in N$.
+ 		
+ 		We will first find a constant $c$ so that
+ 		\[ F(x,u) \cdot u > 0, \quad G(x,u) \cdot u > 0 \]
+ 		for $x \in N$ and $0 < \|u\| < c$. That is, the points $F(x,u)$ and $G(x,u)$ belong to the same open half-space in $\R^p$. So the homotopy
+ 		\[ (1-t)F(x,u) + tG(x,u) \]
+ 		between $F$ and $G$ will not map any new points into $0$, at least for $\|u\|<c$.
+ 		
+ 		By Taylor's theorem
+ 		\[ \| F(x,u) - u \| \leq c_1 \|u\|^2, \quad \text{for} \quad \|u\| \leq 1. \]
+ 		Hence
+ 		\[ |(F(x,u)-u) \cdot u| \leq c_1 \|u\|^3 \]
+ 		and
+ 		\[ F(x,u) \cdot u \geq \|u\|^2 - c_1 \|u\|^3 > 0 \]
+ 		for $0 < \|u\| < c = \min (c_1^{-1},1)$, with a similar inequality for $G$.
+ 		
+ 		To avoid moving distant points we select a smooth map $\la \colon \R^p \to \R$ with
+ 		\[ \la(u) = \left\{\begin{array}{ll}
+ 			1, &\quad \|u\| \leq c/2, \\
+ 			0, &\quad \|u\| \geq c.
+ 		\end{array}\right. \]
+ 		Now the homotopy
+ 		\[ F_t(x,u) = [1-\la(u)t]F(x,u) + \la(u)tG(x,u) \]
+ 		deforms $F=F_0$ into a mapping $F_1$ that (1) coincides with $G$ in the region $\|u\| < c/2$, (2) coincides with $F$ for $\|u\| \geq c$, and (3) has no new zeros. Making a corresponding deformation of the original mapping $f$, this clearly completes the proof of Lemma \ref{lem:7.4}.
+ 	\end{proof}
+ 
+ 	\begin{proof}[Proof of Theorem \ref{thm:7B}.]
+ 		If $f$ and $g$ are smoothly homotopic, then Lemma \ref{lem:7.3} asserts that the Pontryagin manifolds $f^{-1}(y)$ and $g^{-1}(y)$ are framed cobordant. Conversely, given a framed cobordism $(X,\frw)$ between $f^{-1}(y)$ and $g^{-1}(y)$, an argument completely analogous to the proof of Theorem \ref{thm:7C} constructs a homotopy
+ 		\[ F \colon M \x [0,1] \to \bbS^p \]
+ 		whose Pontryagin manifold $(F^{-1}(y),F^*\frv)$ is precisely equal to $(X,\frw)$. Setting $F_t(x)=F(x,t)$, note that the maps $F_0$ and $f$ have exactly the same Pontryagin manifold. Hence $F_0 \sim f$ by Lemma \ref{lem:7.4}; and similarly $F_1 \sim g$. Therefore $f \sim g$, which completes the proof of Theorem \ref{thm:7B}.
+ 	\end{proof}
+ 
+ 	\begin{remark}\label{rmk:7}
+ 		Theorems \ref{thm:7A}, \ref{thm:7B} and \ref{thm:7C} can easily be generalized so as to apply to a manifold $M$ with boundary. The essential idea is to consider only mappings which carry the boundary into a base point $s_0$. The homotopy classes of such mappings
+ 		\[ (M,\partial M) \to (\bbS^p,s_0) \]
+ 		are in one-one correspondence with the cobordism classes of framed submanifolds
+ 		\[ N \subset \Interior(M) \]
+ 		of codimension $p$. If $p \geq \frac12 m + 1$, then this set of homotopy classes can be given the structure of an Abelian group, called the $p$-th \textit{cohomotopy group}\index{cohomotopy group} $\pi^p(M,\partial M)$. The composition operation in $\pi^p(M,\partial M)$ corresponds to the union operation for disjoint framed submanifolds of $\Interior(M)$. (Compare \S\ref{chap:8}, Problem \ref{prob:17}.)
+ 	\end{remark}
+ 
+ 	\section{The Hopf theorem}
+ 	As an example, let $M$ be a connected and oriented manifold of dimension $m=p$. A framed submanifold of codimension $p$ is just a finite set of points with a preferred basis at each. Let $\sgn(x)$ equal $+1$ or $-1$ according as the preferred basis determines the right or wrong orientation. Then $\sum \sgn(x)$ is clearly equal to the degree of the associated map $M \to \bbS^m$. But it is not difficult to see that the framed cobordism class of the $0$-manifold is uniquely determined by this integer $\sum \sgn(x)$. Thus we have proved the following.
+ 	
+ 	\begin{hopf}\index{Hopf, H.}
+ 		If $M$ is connected, oriented, and boundaryless, then two maps $M \to \bbS^m$ are smoothly homotopic if and only if they have the same degree.
+ 	\end{hopf}
+ 
+ 	On the other hand, suppose that $M$ is not orientable. Then given a basis for $TM_x$ we can slide $x$ around $M$ in a closed loop so as to tranform the given basis into one of opposite orientation. An easy argument the proves the following:
+ 	
+ 	\begin{theorem}
+ 		If $M$ is connected but nonorientable, then two maps $M \to \bbS^m$ are homotopic if and only if they have the same mod 2 degree.
+ 	\end{theorem}
+ 
+ 	The theory of framed cobordism was introduced by Pontryagin\index{Pontryagin, L.} in order to study homotopy classes of mappings
+ 	\[ \bbS^m \to \bbS^p \]
+ 	with $m>p$. For example if $m=p+1 \geq 4$, there are precisely two homotopy classes of mappings $\bbS^m \to \bbS^p$. Pontryagin proved this result by classifying framed 1-manifolds in $\bbS^m$. With considerably more difficulty he was able to show that there are just two homotopy classes also in the case $m=p+2\geq4$, using framed 2-manifolds. However, for $m-p>2$ this approach to the problem runs into manifold difficulties.
+ 	
+ 	It has since turned out to be easier to enumerate homotopy classes of mappings by quite different, more algebraic methods\footnote{See for example S.-T. Hu, \textit{Homotopy Theory}.}. Pontryagin's construction is, however, a double-edged tool. It not only allows us to translate information about manifolds into homotopy theory; it conversely enables us to translate any information about homotopy into manifold theory. Some of the deepest work in modern topology has come from the interplay of these two theories. Rene Thom's\index{Thom, R.} work on cobordism is an important example of this. (References \cite{bib36}, \cite{bib21}.)
+ 	
+ 	\chapter{Exercises}\label{chap:8}
+ 	\sectionmark{Exercises}
+ 	
+ 	In conclusion here are some problems for the reader.
+ 	
+ 	\begin{problem}
+ 		Show that the degree of a composition $g \circ f$ is equal to the product $(\mathop{\mathrm{degree}} g)(\mathop{\mathrm{degree}} f)$.
+ 	\end{problem}
+ 
+ 	\begin{problem}
+ 		Show that every complex polynomial of degree $n$ gives rise to a smooth map from the Gauss sphere $\bbS^2$ to itself of degree $n$.
+ 	\end{problem}
+ 
+ 	\begin{problem}
+ 		If two maps $f$ and $g$ from $X$ to $\bbS^p$ satisfy $\|f(x)-g(x)\|<2$ for all $x$, prove that $f$ is homotopic to $g$, the homotopy being smooth if $f$ and $g$ are smooth.
+ 	\end{problem}
+ 	
+ 	\begin{problem}\label{prob:4}
+ 		If $X$ is compact, show that every continuous map $X \to \bbS^p$ can be uniformly approximated by a smooth map. If two smooth maps $X \to \bbS^p$ are continuously homotopic, show that they are smoothly homotopic.
+ 	\end{problem}
+ 
+ 	\begin{problem}
+ 		If $m<p$, show that every map $M^m \to \bbS^p$ is homotopic to a constant.
+ 	\end{problem}
+ 
+ 	\begin{problem}[Brouwer\index{Brouwer, L. E. J.}]
+ 		Show that any map $\bbS^n \to \bbS^n$ with degree different from $(-1)^{n+1}$ must have a fixed point.
+ 	\end{problem}
+ 
+ 	\begin{problem}
+ 		Show that any map $\bbS^n \to \bbS^n$ of odd degree must carry some pair of antipodal points into a pair of antipodal points.
+ 	\end{problem}
+ 	
+ 	\begin{problem}
+ 		Given smooth manifolds $M \subset \R^k$ and $N \subset \R^l$, show that the tangent sapce $T(M \x N)_{(x,y)}$ is equal to $TM_x \x TN_y$.
+ 	\end{problem}
+ 
+ 	\begin{problem}
+ 		The graph\index{graph} $\Gamma$ of a smooth map $f \colon M \to N$ is defined to be the set of all $(x,y) \in M \x N$ with $f(x)=y$. Show that $\Gamma$ is a smooth manifold and that the tangent space
+ 		\[ T\Gamma_{(x,y)} \subset TM_x \x TN_y \]
+ 		is equal to the graph of the linear map $\df_x$.
+ 	\end{problem}
+ 	
+ 	\begin{problem}\label{prob:10}
+ 		Given $M \subset \R^k$, show that the \textit{tangent bundle space}\index{tangent bundle space}
+ 		\[ TM = \{\, (x,v) \in M \x \R^k \mid v \in TM_x \,\} \]
+ 		is also a smooth manifold. Show that any smooth map $f \colon M \to N$ gives rise to a smooth map
+ 		\[ \df \colon TM \to TN \]
+ 		where
+ 		\[ \rd(\text{identity}) = \text{identity}, \quad \rd (g \circ f) = (\rd g) \circ (\df). \]
+ 	\end{problem}
+ 
+ 	\begin{problem}\label{prob:11}
+ 		Similarly show that the \textit{normal bundle space}\index{normal bundle space}
+ 		\[ E = \{\, (x,v) \in M \x \R^k \mid v \perp TM_x \,\} \]
+ 		is a smooth manifold. If $M$ is compact and boundaryless, show that the correspondence
+ 		\[ (x,v) \mapsto x + v \]
+ 		from $E$ to $\R^k$ maps the $\eps$-neighborhood of $M \x 0$ in $E$ diffeomorphically onto the $\eps$-neighborhood $N_\eps$ of $M$ in $\R^k$. (Compare the Product Neighborhood Theorem in \S\ref{chap:7}.)
+ 	\end{problem}
+ 
+ 	\begin{problem}\label{prob:12}
+ 		Define $r \colon N_\eps \to M$ by $r(x+v)=x$. Show that $r(x+v)$ is closer to $x+v$ than any other point of $M$. Using this retraction $r$, prove the analogue of Problem \ref{prob:4} in which the sphere $\bbS^p$ is replaced by a manifold $M$.
+ 	\end{problem}
+ 
+ 	\begin{problem}
+ 		Given disjoint manifolds $M,N \subset \R^{k+1}$, the linking map
+ 		\[ \la \colon M \x N \to \bbS^k \]
+ 		is defined by $\la(x,y)=\frac{x-y}{\|x-y\|}$. If $M$ and $N$ are compact, oriented, and boundaryless, with total dimension $m+n=k$, then the degree of $\la$ is called the \textit{linking number}\index{linking number} $l(M,N)$. Prove that
+ 		\[ l(N,M) = (-1)^{(m+1)(n+1)} l(M,N). \]
+ 		If $M$ bounds an oriented manifold $X$ disjoint from $N$, prove that $l(M,N)=0$. Define the linking number for disjoint manifolds in the sphere $\bbS^{m+n+1}$.
+ 	\end{problem}
+ 
+ 	\begin{problem}[The Hopf Invariant\index{Hopf, H.}]
+ 		If $y \neq z$ are regular values for a map $f \colon \bbS^{2p-1} \to \bbS^p$, then the manifolds $f^{-1}(y)$, $f^{-1}(z)$ can be oriented as in \S\ref{chap:5}; hence the linking number $l(f^{-1}(y),f^{-1}(z))$ is defined.
+ 		
+ 		a) Prove that this linking number is locally constant as a function of $y$.
+ 		
+ 		b) If $y$ and $z$ are regular values of $g$ also, where
+ 		\[ \|f(x)-g(x)\| < \|y-z\| \]
+ 		for all $x$, prove that
+ 		\[ l\br{f^{-1}(y),f^{-1}(z)} = l\br{g^{-1}(y),f^{-1}(z)} = l\br{g^{-1}(y),g^{-1}(z)}. \]
+ 		
+ 		c) Prove that $l(f^{-1}(y),f^{-1}(z))$ depends only on the homotopy class of $f$, and does not depend on the choice of $y$ and $z$.
+ 		
+ 		This integer $H(f) = l(f^{-1}(y),f^{-1}(z))$ is called the \textit{Hopf invariant}\index{Hopf invariant} of $f$. (Reference \cite{bib15}.)
+ 	\end{problem}
+ 
+ 	\begin{problem}
+ 		If the dimension $p$ is odd, prove that $H(f)=0$. For a composition
+ 		\[ \bbS^{2p-1} \xrightarrow{f} \bbS^p \xrightarrow{g} \bbS^p \]
+ 		prove that $H(g \circ f)$ is equal to $H(f)$ multiplied by the square of the degree of $g$.
+ 		
+ 		The \textit{Hopf fibration}\index{Hopf fibration} $\pi \colon \bbS^3 \to \bbS^2$ is defined by
+ 		\[ \pi(x_1,x_2,x_3,x_4) = h^{-1} \br{ \frac{x_1 + \mathrm i x_2}{x_3 + \mathrm i x_4} } \]
+ 		where $h$ denotes stereographic projection to the complex plane. Prove that $H(\pi)=1$.
+ 	\end{problem}
+ 
+ 	\begin{problem}
+ 		Two submanifolds $N$ and $N'$ of $M$ are said to intersect transversally\index{transverse} if, for each $x \in N \cap N'$, the subspaces $TN_x$ and $TN'_x$ together generate $TM_x$. (If $n+n'<m$ this means that $N \cap N' = \emptyset$.) If $N$ is a framed submanifold, prove that it can be deformed slightly so as to intersect a given $N'$ transversally. Prove that the resulting intersection is a smooth manifold.
+ 	\end{problem}
+ 
+ 	\begin{problem}\label{prob:17}
+ 		Let $\Pi^p(M)$ denote the set of all framed cobordism classes of codimension $p$ in $M$. Use the transverse intersection operation to define a correspondence
+ 		\[ \Pi^p(M) \x \Pi^q \to \Pi^{p+q}(M). \]
+ 		If $p \geq \frac12 m + 1$, use the disjoint union operation to make $\Pi^p(M)$ into an Abelian group. (Compare p. \pageref{rmk:7}.)
+ 	\end{problem}
+	
+	\appendix
+	
+	\chapter{Classifying 1-manifolds}
+	
+	We will prove the following result, which has been assumed in the text. A brief discussion of the classification problem for higher dimensional manifolds will also be given.
+	
+	\begin{theorem}
+		Any smooth, connected 1-dimensional manifold is diffeomorphic either to the circle $\bbS^1$ or to some interval of real numbers.
+	\end{theorem}
+
+	(An \textit{interval}\index{interval} is a connected subset of $\R$ which is not a poiint. It may be finite or infinite; closed, open, or half-open.)
+	
+	Since any interval is diffeomorphic\footnote{For example, use a diffeomorphism of the form
+	\[ f(t) = a \tanh (t) + b. \]} either to $[0,1]$, $(0,1]$, or $(0,1)$, it follows that there are only four distinct connected 1-manifolds.
+
+	The proof will make use of the concept of ``arc-length''. Let $I$ be an interval.
+	
+	\begin{definition}
+		A map $f \colon I \to M$ is a \textit{parametrization by arc-length}\index{parametrization by arc-length} if $f$ maps $I$ diffeomorphically onto an open subset\footnote{Thus $I$ can have boundary points only if $M$ has boundary points.} of $M$, and if the ``velocity vector'' $\df_s(1) \in TM_{f(s)}$ has unit length, for each $s \in I$.
+	\end{definition}
+
+	Any given local parametrization $I' \to M$ can be transformed into a parametrization by arc-length by straightforward change of variables.
+	
+	\begin{lemma}
+		Let $f \colon I \to M$ and $g \colon J \to M$ be parametrizations by arc-length. The $f(I) \cap g(J)$ has at most two components. If it has only one component, then $f$ can be extended to a parametrization by arc-length of the union $f(I) \cup g(J)$. If it has two conponents, then $M$ must be diffeomorphic to $\bbS^1$.
+	\end{lemma}
+
+	\begin{proof}
+		Clearly $g^{-1} \circ f$ maps some relatively open subset of $I$ diffeomorphically onto a relatively open subset of $J$. Furthermore the derivative of $g^{-1} \circ f$ is equal to $\pm 1$ everywhere.
+		
+		Consider the graph\index{graph} $\Gamma \subset I \x J$, consisting of all $(s,t)$ with $f(s)=g(t)$. Then $\Gamma$ is a closed subset of $I \x J$ made up of line segments of slope $\pm 1$. Since $\Gamma$ is closed and $g^{-1} \circ f$ is locally a diffeomorphism, there line segments cannot end in the interior of $I \x J$, but must extend to the boundary. Since $g^{-1} \circ f$ is one-one and single valued, there can be at most one of the segments ending on each of the four edges of the rectangle $I \x J$. Hence $\Gamma$ has at most two components. (See Figure \ref{fig:19}.) Furthermore, if there are two components, the two must have the same slope.
+		
+		\begin{figure}[H]
+			\centering
+			\def\svgwidth{0.8\columnwidth}
+			\import{}{1mnfd.pdf_tex}
+			\caption{Three of the possibilities for $\Gamma$.}
+			\label{fig:19}
+		\end{figure}
+	
+		If $\Gamma$ is connected, then $g^{-1} \circ f$ extends to a linear map $L \colon \R \to \R$. Now $f$ and $g \circ L$ piece together to yield the required extension
+		\[ F \colon I \cup L^{-1}(J) \to f(I) \cup g(J). \]
+		
+		If $\Gamma$ has two components, with slope say $+1$, they must be arranged as in the left-hand rectangle of Figure \ref{fig:19}. Translating the interval $J = (\gamma,\beta)$ if necessary, we may assume that $\gamma = c$ and $\delta = d$, so that
+		\[ a < b \leq c < d \leq \alpha < beta. \]
+		Now setting $\theta = \frac{2\pi t}{\alpha-a}$, the required diffeomorphism
+		\[ h \colon \bbS^1 \to M \]
+		is defined by the formula
+		\[ h(\cos \theta, \sin \theta) = \left\{
+		\begin{array}{ll}
+			f(t), &\quad a<t<d, \\
+			g(t), &\quad c<t<\beta.
+		\end{array}\right. \]
+		The image $h(\bbS^1)$, being compact and open in $M$, must be the entire manifold $M$. This proves the lemma.
+	\end{proof}
+
+	\begin{proof}[Proof of Classification Theorem]
+		Any parametrization by arc-length can be extended to one
+		\[ f \colon I \to M \]
+		which is maximal in the sense that $f$ cannot be extended over any larger interval as a parametrization by arc-length: it is only necessary to extend $f$ as far as possible to the left and then as far as possible to the right.
+		
+		If $M$ is not diffeomorphic to $\bbS^1$, we will prove that $f$ in onto, and hence is a diffeomorphism. For if the open set $f(I)$ were not all of $M$, there would be a limit point $x$ of $f(I)$ in $M-f(I)$. Parametrizing a neighborhood of $x$ by arc-length and applying the lemma, we would see that $f$ can be extended over a larger interval. This contradicts the assumption that $f$ is maximal and hence completes the proof.
+	\end{proof}
+
+	\begin{remark}
+		For manifolds of higher dimension the classification problem becomes quite formidable. For 2-dimensional manifold, a thorough exposition has been given by Kerekjarto \cite{bib17}. The study of 3-dimensional manifolds is very much a topic of current research. (See Papakyriakopoulos \cite{bib26}.) For compact manifolds of dimension $\geq 4$ the classification problem is actually unsolvable\footnote{See Markov \cite{bib19}.}. But for high dimensional simply connected manifolds there has been much progress in recent years, as exemplified by the work of Smale \cite{bib31} and Wall \cite{bib37}.
+	\end{remark}
+	
+	\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+	
+	\renewcommand{\bibname}{Bibliography\protect\footnote[1]{The following is a miscellaneous list consisting of original sources and of recommended textbooks. For the reader who wishes to pursue the study of differential topology, let me recommend Milnor \cite{bib22}, Munkres \cite{bib25}, and Pontryagin \cite{bib28}. The survey articles \cite{bib23} and \cite{bib32} should also prove useful. For background knowledge in closely related fields, let me recommend Hilton and Wylie \cite{bib11}, Hu \cite{bib16}, Lang \cite{bib18}, de Rham \cite{bib29}, Steenrod \cite{bib34} and Sternberg \cite{bib35}.}}
+	
+	\begin{thebibliography}{99}
+		\bibitem{bib1} Allendoerfer, C. B., ``The Euler number of a Riemann manifold'', \textit{Amer. Jour. Math.} 62 (1940), 243-248.
+		
+		\bibitem{bib2} Apostol, T. M., \textit{Mathematical Analysis}. Reading, Mass.: Addison-Wesley, 1957.
+		
+		\bibitem{bib3} Auslander, L. and R. Mackenzie, \textit{Introduction to Differentiable Manifolds}. New York: McGraw-Hill, 1963.
+		
+		\bibitem{bib4} Brouwer, L. E. J., ``Uber Abbildung von Mannigfaltigkeiten'', \textit{Math. Annalen} 71 (1912), 97-115.
+		
+		\bibitem{bib5} Brown, A. B., ``Functional dependence'', \textit{Trans. Amer. Math. Soc.} 38 (1935), 379-394. (See Theorem 3-III.)
+		
+		\bibitem{bib6} Chern, S. S., ``A simple intrinsic proof of the Gauss-Bonnet formula for closed Riemannian manifolds'', \textit{Annals of Math.} 45 (1944), 747-752.
+		
+		\bibitem{bib7} Dieudonne, J., \textit{Foundations of Modern Analysis}. New York: Academic Press, 1960.
+		
+		\bibitem{bib8} Dubovicki\v{i}, A. Ya., ``On differentiable mappings of an $n$-dimensional cube into a $k$-dimensional cube'', \textit{Mat. Sbornik} N.S. 32 (74), (1953), 443-464. (In Russian.)
+		
+		\bibitem{bib9} Fenchel, W., ``On total curvature of Riemannian manifolds'', \textit{Jour. London Math. Soc.} 15 (1940), 15-22.
+		
+		\bibitem{bib10} Goffman, C., \textit{Calculus of Several Variables}. New York: Harper \& Row, 1965.
+		
+		\bibitem{bib11} Hilton, P., and S. Wylie, \textit{Homology Theory}. Cambridge Univ. Press, 1960.
+		
+		\bibitem{bib12} Hirsch, M., ``A proof of the nonretractibility of a cell onto its boundary'', \textit{Proc. Amer. Math. Soc.} 14 (1963), 364-365.
+		
+		\bibitem{bib13} Hopf, H., ``Abbildungsklassen $n$-dimensionaler Mannigfaltigkeiten'', \textit{Math. Annalen} 96 (1926), 209-224.
+		
+		\bibitem{bib14} Hopf, H, ``Vektorfelder in $n$-dimensionalen Mannigfaltigkeiten'', \textit{Math. Annalen} 96 (1926) 225-250.
+		
+		\bibitem{bib15} Hopf, H. ``Uber die Abbildungen von Spharen auf Spharen niedrigerer Dimension'', \textit{Fundamenta Mathematicae} 25 (1935), 427-440.
+		
+		\bibitem{bib16} Hu, S.-T., \textit{Homotopy Theory}. New York: Academic Press, 1959.
+		
+		\bibitem{bib17} Kerekjarto, B. v., \textit{Vorlesungen \"uber Topologie}. Berlin: Springer, 1923.
+		
+		\bibitem{bib18} Lang, S., \textit{Introduction to Differential Manifolds}. New York: Interscience, 1962.
+		
+		\bibitem{bib19} Markov, A. A., ``Insolubility of the problem of homeomorphy'', \textit{Proceedings Intern. Congress of Math. 1958}, Cambridge Univ. Press, 1960, pp. 300-306. (In Russian.)
+		
+		\bibitem{bib20} Milnor, J., ``On manifolds homeomorphic to the 7-sphere'', \textit{Annals of Math.} 64 (1956), 399-405.
+		
+		\bibitem{bib21} Milnor, J., ``A survey of cobordism theory'', \textit{L'Enseignement math.} 8 (1962), 16-23.
+		
+		\bibitem{bib22} Milnor, J., \textit{Morse Theory}. (Annals Studies 51.) Princeton Univ. Press, 1963.
+		
+		\bibitem{bib23} Milnor, J., ``Diffrential topology'', \textit{Lectures on Modern Mathematics}, II, ed. T. L. Saaty, New York: Wiley, 1964, pp. 165-183.
+		
+		\bibitem{bib24} Morse, A. P., ``The behavior of a function on its critical set'', \textit{Annals of Math.} 40 (1939), 62-70.
+		
+		\bibitem{bib25} Munkres, J. R., \textit{Elementary Differential Topology}. (Annals Studies 54). Princeton Univ. Press, 1963.
+		
+		\bibitem{bib26} Papakyriakopoulos, C. D., ``The theory of three-dimensional manifolds since 1950'', \textit{Proceedings Intern. Congress of Math. 1958}, Cambridge Univ. Press, 1960, pp.433-440.
+		
+		\bibitem{bib27} Pontryagin, L. S., ``A classification of continuous transformations of a complex into a sphere'', \textit{Doklady Akad. Nark. S.S.S.R. (Comptes Rendues)} 19 (1938), 147-149. 
+		
+		\bibitem{bib28} Pontryagin, L. S., ``Smooth manifolds and their applications in homotopy theory'', \textit{Amer. Math. Soc. Translations}, Ser. 2, II (1959), 1-114. (Translated from \textit{Trudy Inst. Steklov} 45 (1955).)
+		
+		\bibitem{bib29} Rham, G. de, \textit{Varietes differentiables}, Paris: Hermann, 1955.
+		
+		\bibitem{bib30} Sard, A., ``The measure of critical points of differentiable maps'', \textit{Bull. Amer. Math. Soc.} 48 (1942), 883-890.
+		
+		\bibitem{bib31} Smale, S., ``Generalized Poincar\'e's conjecture in dimensions greater than four'', \textit{Annals of Math.} 74 (1961), 391-406.
+		
+		\bibitem{bib32} Smale, S., ``A survey of some recent developments in differential topology'', \textit{Bull. Amer. Math. Soc.} 69 (1963), 131-145.
+		
+		\bibitem{bib33} Spivak, M., \textit{Calculus on Manifolds}. New York: Benjamin, 1965.
+		
+		\bibitem{bib34} Steenrod, N., \textit{The Topology of Fibre Bundles}. Princeton Univ. Press, 1951.
+		
+		\bibitem{bib35} Sternberg, S., \textit{Lectures on Differential Geometry}. New York: Prentice-Hall, 1964.
+		
+		\bibitem{bib36} Thom, R., ``Quelques proprietes globales des varietes differentiables'', \textit{Commentarii Math. Helvet.} 28 (1954), 17-86.
+		
+		\bibitem{bib37} Wall, C. T. C., ``Classification of $(n-1)$-connected $2n$-manifolds'', \textit{Annals of Math.} 75 (1962), 163-189.
+		
+		\bibitem{bib38} Whitney, H., ``A function not constant on a connected set of critical points'', \textit{Duke Math. Jour.} 1 (1935), 514-517. \\
+		
+		\noindent Added April, 1969:
+		
+		\bibitem{bib39} Husemoller, D., \textit{Fiber Bundles}. New York: McGraw-Hill, 1966.
+		
+		\bibitem{bib40} Spanier, E. H., \textit{Algebraic Topology}. New York: McGraw-Hill, 1966.
+		
+		\bibitem{bib41} Wall, C. T. C., ``Topology of smooth manifolds'', \textit{J. London Math. Soc.} 40 (1965), 1-20.
+		
+		\bibitem{bib42} Wallace, A. H., \textit{Differential Topology, First Steps}. New York: Benjamin, 1968.
+	\end{thebibliography}
+	
+	\addcontentsline{toc}{chapter}{Bibliography}
+	\chaptermark{Bibliography}
+	\sectionmark{Bibliography}
+	\renewcommand{\chaptermark}[1] {\markboth{\MakeUppercase{#1}}{}} 
+	\renewcommand{\sectionmark}[1] {\markright{\MakeUppercase{#1}}}
+	
+	
+	\printindex
+	\addcontentsline{toc}{chapter}{Index}
+	\chaptermark{Index}
+	\sectionmark{Index}
+	
+	\printindex[symbol]
+	\addcontentsline{toc}{chapter}{Index of Symbols}
+	\chaptermark{Index of Symbols}
+	\sectionmark{Index of Symbols}
+\end{document}
